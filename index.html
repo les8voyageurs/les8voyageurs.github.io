@@ -1,165 +1,143 @@
 <!DOCTYPE HTML>
+<!--
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-<head>
-    <title>Alexandre Carbonell</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            overflow: hidden; /* Prevent scrolling */
-            font-family: Arial, sans-serif;
-        }
-        #header .content .inner img {
-            width: 300px;
-            height: auto;
-            border-radius: 50%; /* Optional: to make the image circular */
-        }
-        #header .logo span {
-            font-size: 2em; /* Adjust the size as needed */
-            font-weight: bold;
-        }
-        #sketch-holder {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: #7d8193; /* Background color */
-            z-index: -1;
-        }
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-    <script>
-        let data = [];
-        let maxPoints = 200;
+	<head>
+		<title>Alexandre Carbonell</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			#header .content .inner img {
+				width: 150px; /* Adjust the size as needed */
+				height: auto;
+				border-radius: 50%; /* Optional: to make the image circular */
+			}
+			#header .logo span {
+				font-size: 2em; /* Adjust the size as needed */
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body class="is-preload">
 
-        function setup() {
-            let canvas = createCanvas(windowWidth, windowHeight);
-            canvas.parent('sketch-holder');
-            for (let i = 0; i < maxPoints; i++) {
-                data.push(noise(i * 0.05) * height / 2 + height / 4);
-            }
-        }
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-        function draw() {
-            background('#7d8193'); // Background color
-            stroke(255);
-            noFill();
-            beginShape();
-            for (let i = 0; i < data.length; i++) {
-                vertex(i * (width / maxPoints), data[i]);
-            }
-            endShape();
+				<!-- Header -->
+					<header id="header">
+						<div class="logo">
+							<span>AC</span>
+						</div>
+						<div class="content">
+							<div class="inner">
+								<h1>Alexandre Carbonell</h1>
+								<img src="images/IMG_5692.jpg" alt="Alexandre Carbonell" />
+							</div>
+						</div>
+						<nav>
+							<ul>
+								<li><a href="#intro">Intro</a></li>
+								<li><a href="#work">Work</a></li>
+								<li><a href="#about">About</a></li>
+								<li><a href="#contact">Contact</a></li>
+								<li><a href="#documents">Documents</a></li>
+							</ul>
+						</nav>
+					</header>
 
-            let newPoint = noise((frameCount + maxPoints) * 0.05) * height / 2 + height / 4;
-            data.push(newPoint);
-            if (data.length > maxPoints) {
-                data.shift();
-            }
-        }
+				<!-- Main -->
+					<div id="main">
 
-        function windowResized() {
-            resizeCanvas(windowWidth, windowHeight);
-        }
-    </script>
-</head>
-<body>
-    <div id="sketch-holder"></div>
+						<!-- Intro -->
+							<article id="intro">
+								<h2 class="major">Intro</h2>
+								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+								<p>Hello, I am Alexandre Carbonell. I have a Master's degree in Applied Mathematics from ETH Zürich, and a Bachelor's degree in Mathematics from EPFL. I hail from the beautiful city of Lyon, France, and currently reside in Zürich, where I work as an Associate - Pricing Analyst at Ageas Re.</p>
+							</article>
 
-    <div id="wrapper">
-        <!-- Header -->
-        <header id="header">
-            <div class="logo">
-                <span>AC</span>
-            </div>
-            <div class="content">
-                <div class="inner">
-                    <h1>Alexandre Carbonell</h1>
-                    <img src="images/IMG_5692.jpg" alt="Alexandre Carbonell">
-                </div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#intro">Intro</a></li>
-                    <li><a href="#work">Work</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#documents">Documents</a></li>
-                </ul>
-            </nav>
-        </header>
+						<!-- Work -->
+							<article id="work">
+								<h2 class="major">Work</h2>
+								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+								<p>At Ageas Re, I specialize in statistical modelling, quantitative analysis, financial engineering, and risk assessment within the insurance and reinsurance sectors. My analytical skills and mathematical expertise enable me to develop precise pricing models and risk management strategies.</p>
+							</article>
 
-        <!-- Main -->
-        <div id="main">
-            <!-- Intro -->
-            <article id="intro">
-                <h2 class="major">Intro</h2>
-                <span class="image main"><img src="images/pic01.jpg" alt=""></span>
-                <p>Hello, I am Alexandre Carbonell. I have a Master's degree in Applied Mathematics from ETH Zürich, and a Bachelor's degree in Mathematics from EPFL. I hail from the beautiful city of Lyon, France, and currently reside in Zürich, where I work as an Associate - Pricing Analyst at Ageas Re.</p>
-            </article>
+						<!-- About -->
+							<article id="about">
+								<h2 class="major">About</h2>
+								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
+								<p>Outside of work, I am passionate about sports, particularly Judo, running, and skiing. These activities not only keep me physically fit but also instill discipline and perseverance in all aspects of my life.</p>
+							</article>
 
-            <!-- Work -->
-            <article id="work">
-                <h2 class="major">Work</h2>
-                <span class="image main"><img src="images/pic02.jpg" alt=""></span>
-                <p>At Ageas Re, I specialize in statistical modelling, quantitative analysis, financial engineering, and risk assessment within the insurance and reinsurance sectors. My analytical skills and mathematical expertise enable me to develop precise pricing models and risk management strategies.</p>
-            </article>
+						<!-- Documents -->
+							<article id="documents">
+								<h2 class="major">Documents</h2>
+								<ul>
+									<li><a href="Papers/Resume_Alexandre_Carbonell.pdf" target="_blank">Curriculum Vitae</a></li>
+									<li><a href="Papers/Report.pdf" target="_blank">Chebyshev method for the implied
+										volatility in options pricing</a></li>
+									<li><a href="Papers/Repport_VaR_CVaR.pdf" target="_blank">VaR and CVaR analysis for risk
+										management</a></li>
+									<li><a href="Papers/Semester_Paper_Report.pdf" target="_blank">Predictive modeling for insurance claim:
+										Dealing with the challenge of precise prediction through an example</a></li>
+								</ul>
+							</article>
 
-            <!-- About -->
-            <article id="about">
-                <h2 class="major">About</h2>
-                <span class="image main"><img src="images/pic03.jpg" alt=""></span>
-                <p>Outside of work, I am passionate about sports, particularly Judo, running, and skiing. These activities not only keep me physically fit but also instill discipline and perseverance in all aspects of my life.</p>
-            </article>
+						<!-- Contact -->
+							<article id="contact">
+								<h2 class="major">Contact</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Name</label>
+											<input type="text" name="name" id="name" />
+										</div>
+										<div class="field half">
+											<label for="email">Email</label>
+											<input type="text" name="email" id="email" />
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="4"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" class="primary" /></li>
+										<li><input type="reset" value="Reset" /></li>
+									</ul>
+								</form>
+								<ul class="icons">
+									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+								<p>You can also reach me at <a href="mailto:alexandrecarbonell.pro@gmail.com">alexandrecarbonell.pro@gmail.com</a>.</p>
+							</article>
 
-            <!-- Documents -->
-            <article id="documents">
-                <h2 class="major">Documents</h2>
-                <ul>
-                    <li><a href="Papers/Resume_Alexandre_Carbonell.pdf" target="_blank">Curriculum Vitae</a></li>
-                    <li><a href="Papers/Report.pdf" target="_blank">Chebyshev method for the implied volatility in options pricing</a></li>
-                    <li><a href="Papers/Repport_VaR_CVaR.pdf" target="_blank">VaR and CVaR analysis for risk management</a></li>
-                    <li><a href="Papers/Semester_Paper_Report.pdf" target="_blank">Predictive modeling for insurance claim: Dealing with the challenge of precise prediction through an example</a></li>
-                </ul>
-            </article>
+					</div>
 
-            <!-- Contact -->
-            <article id="contact">
-                <h2 class="major">Contact</h2>
-                <form method="post" action="#">
-                    <div class="fields">
-                        <div class="field half">
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name">
-                        </div>
-                        <div class="field half">
-                            <label for="email">Email</label>
-                            <input type="text" name="email" id="email">
-                        </div>
-                        <div class="field">
-                            <label for="message">Message</label>
-                            <textarea name="message" id="message" rows="4"></textarea>
-                        </div>
-                    </div>
-                    <ul class="actions">
-                        <li><input type="submit" value="Send Message" class="primary"></li>
-                        <li><input type="reset" value="Reset"></li>
-                    </ul>
-                </form>
-                <ul class="icons">
-                    <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-                    <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-                    <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-                    <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-                </ul>
-                <p>You can also reach me at <a href="mailto:alexandrecarbonell.pro@gmail.com">alexandrecarbonell.pro@gmail.com</a>.</p>
-            </article>
-        </div>
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy;Alexandre Carbonell 2024.</p>
+					</footer>
 
-        <!-- Footer -->
-        <footer id="footer">
-            <p class="copyright">&copy;Alexandre Carbonell 2024.</p>
-        </footer>
-    </div>
-</body>
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
 </html>
