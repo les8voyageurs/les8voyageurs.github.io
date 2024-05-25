@@ -1,8 +1,6 @@
 <!DOCTYPE HTML>
 <!--
-	Dimension by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	Custom Portfolio for Alexandre Carbonell
 -->
 <html>
 	<head>
@@ -12,14 +10,48 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<style>
+			body {
+				font-family: 'Arial', sans-serif;
+				color: #333;
+				background-color: #f4f4f4;
+			}
 			#header .content .inner img {
-				width: 300px; /* Adjust the size as needed */
+				width: 250px; /* Adjust the size as needed */
 				height: auto;
-				border-radius: 30%; /* Optional: to make the image circular */
+				border-radius: 50%; /* Circular image */
+				box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Add shadow */
 			}
 			#header .logo span {
-				font-size: 2em; /* Adjust the size as needed */
+				font-size: 2.5em; /* Adjust the size as needed */
 				font-weight: bold;
+				color: #0056b3;
+			}
+			#header {
+				background: linear-gradient(135deg, #ff4081 0%, #81d4fa 100%);
+				color: white;
+			}
+			#main article {
+				background: #ffffff;
+				padding: 2em;
+				border-radius: 10px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+				margin-bottom: 1.5em;
+			}
+			#footer {
+				background: #0056b3;
+				color: white;
+				padding: 1em 0;
+				text-align: center;
+			}
+			a {
+				color: #ff4081;
+				text-decoration: none;
+			}
+			a:hover {
+				text-decoration: underline;
+			}
+			ul.icons li a {
+				color: white;
 			}
 		</style>
 	</head>
@@ -44,8 +76,8 @@
 								<li><a href="#intro">Intro</a></li>
 								<li><a href="#work">Work</a></li>
 								<li><a href="#about">About</a></li>
-								<li><a href="#contact">Contact</a></li>
 								<li><a href="#documents">Documents</a></li>
+								<li><a href="#contact">Contact</a></li>
 							</ul>
 						</nav>
 					</header>
@@ -79,12 +111,9 @@
 								<h2 class="major">Documents</h2>
 								<ul>
 									<li><a href="Papers/Resume_Alexandre_Carbonell.pdf" target="_blank">Curriculum Vitae</a></li>
-									<li><a href="Papers/Report.pdf" target="_blank">Chebyshev method for the implied
-										volatility in options pricing</a></li>
-									<li><a href="Papers/Repport_VaR_CVaR.pdf" target="_blank">VaR and CVaR analysis for risk
-										management</a></li>
-									<li><a href="Papers/Semester_Paper_Report.pdf" target="_blank">Predictive modeling for insurance claim:
-										Dealing with the challenge of precise prediction through an example</a></li>
+									<li><a href="Papers/Report.pdf" target="_blank">Chebyshev method for the implied volatility in options pricing</a></li>
+									<li><a href="Papers/Repport_VaR_CVaR.pdf" target="_blank">VaR and CVaR analysis for risk management</a></li>
+									<li><a href="Papers/Semester_Paper_Report.pdf" target="_blank">Predictive modeling for insurance claim: Dealing with the challenge of precise prediction through an example</a></li>
 								</ul>
 							</article>
 
@@ -112,10 +141,10 @@
 									</ul>
 								</form>
 								<ul class="icons">
-									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="https://twitter.com/yourusername" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="https://facebook.com/yourusername" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="https://instagram.com/yourusername" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="https://github.com/yourusername" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 								</ul>
 								<p>You can also reach me at <a href="mailto:alexandrecarbonell.pro@gmail.com">alexandrecarbonell.pro@gmail.com</a>.</p>
 							</article>
@@ -124,7 +153,7 @@
 
 				<!-- Footer -->
 					<footer id="footer">
-						<p class="copyright">&copy;Alexandre Carbonell 2024.</p>
+						<p class="copyright">&copy;Alexandre Carbonell 2024. All rights reserved.</p>
 					</footer>
 
 			</div>
