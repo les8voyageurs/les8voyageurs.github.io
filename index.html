@@ -1,220 +1,143 @@
 <!DOCTYPE HTML>
 <!--
-	Professional Portfolio for Alexandre Carbonell
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
 	<head>
-		<title>Alexandre Carbonell - Professional Portfolio</title>
+		<title>Alexandre Carbonell</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<style>
-			body {
-				font-family: 'Arial', sans-serif;
-				color: #333;
-				background-color: #f9f9f9;
-				margin: 0;
-			}
-			#header {
-				background-color: #004080;
-				color: #ffffff;
-				padding: 20px 0;
-				text-align: center;
+			#header .content .inner img {
+				width: 300px; /* Adjust the size as needed */
+				height: auto;
+				border-radius: 30%; /* Optional: to make the image circular */
 			}
 			#header .logo span {
-				font-size: 2.5em; 
+				font-size: 2em; /* Adjust the size as needed */
 				font-weight: bold;
-			}
-			#header .content .inner {
-				margin: 20px 0;
-			}
-			#header .content .inner img {
-				width: 200px; 
-				height: auto;
-				border-radius: 50%;
-				border: 4px solid #ffffff;
-			}
-			nav ul {
-				list-style: none;
-				padding: 0;
-				display: flex;
-				justify-content: center;
-				margin: 20px 0 0 0;
-			}
-			nav ul li {
-				margin: 0 15px;
-			}
-			nav ul li a {
-				color: #ffffff;
-				text-decoration: none;
-				font-weight: bold;
-				font-size: 1.2em;
-			}
-			nav ul li a:hover {
-				text-decoration: underline;
-			}
-			#main {
-				max-width: 900px;
-				margin: 40px auto;
-				padding: 0 20px;
-			}
-			#main article {
-				background: #ffffff;
-				padding: 20px;
-				border-radius: 10px;
-				box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-				margin-bottom: 20px;
-			}
-			#main article .major {
-				font-size: 1.5em;
-				margin-bottom: 10px;
-				color: #004080;
-			}
-			#main article p {
-				line-height: 1.6;
-			}
-			#footer {
-				background-color: #004080;
-				color: #ffffff;
-				text-align: center;
-				padding: 20px 0;
-			}
-			#footer p {
-				margin: 0;
-			}
-			a {
-				color: #004080;
-				text-decoration: none;
-			}
-			a:hover {
-				text-decoration: underline;
-			}
-			ul.icons {
-				list-style: none;
-				padding: 0;
-				display: flex;
-				justify-content: center;
-				margin-top: 20px;
-			}
-			ul.icons li {
-				margin: 0 10px;
-			}
-			ul.icons li a {
-				color: #ffffff;
-				font-size: 1.5em;
 			}
 		</style>
 	</head>
 	<body class="is-preload">
 
 		<!-- Wrapper -->
-		<div id="wrapper">
+			<div id="wrapper">
 
-			<!-- Header -->
-			<header id="header">
-				<div class="logo">
-					<span>AC</span>
-				</div>
-				<div class="content">
-					<div class="inner">
-						<h1>Alexandre Carbonell</h1>
-						<img src="images/IMG_5692.jpg" alt="Alexandre Carbonell" />
-					</div>
-				</div>
-				<nav>
-					<ul>
-						<li><a href="#intro">Intro</a></li>
-						<li><a href="#work">Work</a></li>
-						<li><a href="#about">About</a></li>
-						<li><a href="#documents">Documents</a></li>
-						<li><a href="#contact">Contact</a></li>
-					</ul>
-				</nav>
-			</header>
-
-			<!-- Main -->
-			<div id="main">
-
-				<!-- Intro -->
-				<article id="intro">
-					<h2 class="major">Intro</h2>
-					<p>Hello, I am Alexandre Carbonell, a professional mathematician with a Master's degree in Applied Mathematics from ETH Zürich and a Bachelor's degree in Mathematics from EPFL. I am based in Zürich, Switzerland, originally from Lyon, France. Currently, I work as an Associate - Pricing Analyst at Ageas Re, focusing on statistical modeling, quantitative analysis, and financial engineering within the insurance and reinsurance sectors.</p>
-				</article>
-
-				<!-- Work -->
-				<article id="work">
-					<h2 class="major">Work</h2>
-					<p>At Ageas Re, I specialize in developing precise pricing models and risk management strategies. My work involves extensive statistical modeling, quantitative analysis, and financial engineering to assess and manage risks in the insurance and reinsurance sectors. My expertise allows me to contribute effectively to the company's analytical and strategic needs.</p>
-				</article>
-
-				<!-- About -->
-				<article id="about">
-					<h2 class="major">About</h2>
-					<p>Outside of my professional life, I am an avid sports enthusiast. I particularly enjoy Judo, running, and skiing, which help me maintain physical fitness and mental discipline. These activities teach me perseverance and focus, qualities that I bring to my professional work as well.</p>
-				</article>
-
-				<!-- Documents -->
-				<article id="documents">
-					<h2 class="major">Documents</h2>
-					<ul>
-						<li><a href="Papers/Resume_Alexandre_Carbonell.pdf" target="_blank">Curriculum Vitae</a></li>
-						<li><a href="Papers/Report.pdf" target="_blank">Chebyshev Method for the Implied Volatility in Options Pricing</a></li>
-						<li><a href="Papers/Repport_VaR_CVaR.pdf" target="_blank">VaR and CVaR Analysis for Risk Management</a></li>
-						<li><a href="Papers/Semester_Paper_Report.pdf" target="_blank">Predictive Modeling for Insurance Claims</a></li>
-					</ul>
-				</article>
-
-				<!-- Contact -->
-				<article id="contact">
-					<h2 class="major">Contact</h2>
-					<form method="post" action="#">
-						<div class="fields">
-							<div class="field half">
-								<label for="name">Name</label>
-								<input type="text" name="name" id="name" />
-							</div>
-							<div class="field half">
-								<label for="email">Email</label>
-								<input type="text" name="email" id="email" />
-							</div>
-							<div class="field">
-								<label for="message">Message</label>
-								<textarea name="message" id="message" rows="4"></textarea>
+				<!-- Header -->
+					<header id="header">
+						<div class="logo">
+							<span>AC</span>
+						</div>
+						<div class="content">
+							<div class="inner">
+								<h1>Alexandre Carbonell</h1>
+								<img src="images/IMG_5692.jpg" alt="Alexandre Carbonell" />
 							</div>
 						</div>
-						<ul class="actions">
-							<li><input type="submit" value="Send Message" class="primary" /></li>
-							<li><input type="reset" value="Reset" /></li>
-						</ul>
-					</form>
-					<ul class="icons">
-						<li><a href="https://twitter.com/yourusername" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="https://facebook.com/yourusername" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="https://instagram.com/yourusername" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="https://github.com/yourusername" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-					</ul>
-					<p>You can also reach me at <a href="mailto:alexandrecarbonell.pro@gmail.com">alexandrecarbonell.pro@gmail.com</a>.</p>
-				</article>
+						<nav>
+							<ul>
+								<li><a href="#intro">Intro</a></li>
+								<li><a href="#work">Work</a></li>
+								<li><a href="#about">About</a></li>
+								<li><a href="#contact">Contact</a></li>
+								<li><a href="#documents">Documents</a></li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Intro -->
+							<article id="intro">
+								<h2 class="major">Intro</h2>
+								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+								<p>Hello, I am Alexandre Carbonell. I have a Master's degree in Applied Mathematics from ETH Zürich, and a Bachelor's degree in Mathematics from EPFL. I hail from the beautiful city of Lyon, France, and currently reside in Zürich, where I work as an Associate - Pricing Analyst at Ageas Re.</p>
+							</article>
+
+						<!-- Work -->
+							<article id="work">
+								<h2 class="major">Work</h2>
+								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+								<p>At Ageas Re, I specialize in statistical modelling, quantitative analysis, financial engineering, and risk assessment within the insurance and reinsurance sectors. My analytical skills and mathematical expertise enable me to develop precise pricing models and risk management strategies.</p>
+							</article>
+
+						<!-- About -->
+							<article id="about">
+								<h2 class="major">About</h2>
+								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
+								<p>Outside of work, I am passionate about sports, particularly Judo, running, and skiing. These activities not only keep me physically fit but also instill discipline and perseverance in all aspects of my life.</p>
+							</article>
+
+						<!-- Documents -->
+							<article id="documents">
+								<h2 class="major">Documents</h2>
+								<ul>
+									<li><a href="Papers/Resume_Alexandre_Carbonell.pdf" target="_blank">Curriculum Vitae</a></li>
+									<li><a href="Papers/Report.pdf" target="_blank">Chebyshev method for the implied
+										volatility in options pricing</a></li>
+									<li><a href="Papers/Repport_VaR_CVaR.pdf" target="_blank">VaR and CVaR analysis for risk
+										management</a></li>
+									<li><a href="Papers/Semester_Paper_Report.pdf" target="_blank">Predictive modeling for insurance claim:
+										Dealing with the challenge of precise prediction through an example</a></li>
+								</ul>
+							</article>
+
+						<!-- Contact -->
+							<article id="contact">
+								<h2 class="major">Contact</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Name</label>
+											<input type="text" name="name" id="name" />
+										</div>
+										<div class="field half">
+											<label for="email">Email</label>
+											<input type="text" name="email" id="email" />
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="4"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" class="primary" /></li>
+										<li><input type="reset" value="Reset" /></li>
+									</ul>
+								</form>
+								<ul class="icons">
+									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+								<p>You can also reach me at <a href="mailto:alexandrecarbonell.pro@gmail.com">alexandrecarbonell.pro@gmail.com</a>.</p>
+							</article>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy;Alexandre Carbonell 2024.</p>
+					</footer>
 
 			</div>
 
-			<!-- Footer -->
-			<footer id="footer">
-				<p class="copyright">&copy; 2024 Alexandre Carbonell. All rights reserved.</p>
-			</footer>
-
-		</div>
-
 		<!-- BG -->
-		<div id="bg"></div>
+			<div id="bg"></div>
 
 		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
 
 	</body>
 </html>
