@@ -21,116 +21,140 @@
 				font-size: 2em; /* Adjust the size as needed */
 				font-weight: bold;
 			}
+			#omega-sign {
+				position: absolute;
+				font-size: 2em;
+				color: black; /* Adjust the color as needed */
+				pointer-events: none; /* Makes sure the mouse events pass through the omega sign */
+				display: none; /* Initially hidden */
+			}
 		</style>
 	</head>
 	<body class="is-preload">
 
 		<!-- Wrapper -->
-			<div id="wrapper">
+		<div id="wrapper">
 
-				<!-- Header -->
-					<header id="header">
-						<div class="logo">
-							<span>AC</span>
-						</div>
-						<div class="content">
-							<div class="inner">
-								<h1>Alexandre Carbonell</h1>
-								<img src="images/IMG_5692.jpg" alt="Alexandre Carbonell" />
+			<!-- Header -->
+			<header id="header">
+				<div class="logo">
+					<span>AC</span>
+				</div>
+				<div class="content">
+					<div class="inner">
+						<h1>Alexandre Carbonell</h1>
+						<img src="images/IMG_5692.jpg" alt="Alexandre Carbonell" />
+					</div>
+				</div>
+				<nav>
+					<ul>
+						<li><a href="#intro">About Me</a></li>
+						<li><a href="#perso">Personal Interests</a></li>
+						<li><a href="#contact">Contact</a></li>
+						<li><a href="#papers">Papers and Projects</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<!-- Main -->
+			<div id="main">
+
+				<!-- Intro -->
+				<article id="intro">
+					<h2 class="major">About Me</h2>
+					<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+					<p>Hello, I am Alexandre Carbonell. I have a Master's degree in Applied Mathematics from ETH Zürich, and a Bachelor's degree in Mathematics from EPFL. I hail from the beautiful city of Lyon, France, and currently reside in Zürich, where I work as an Associate - Pricing Analyst at Ageas Re.</p>
+					<li><p>You can find my CV here: <a href="Papers/Resume_Alexandre_Carbonell.pdf" target="_blank">Curriculum Vitae</a>.</p></li>
+					<li><p>And reach me at: <a href="mailto:alexandrecarbonell.pro@gmail.com">alexandrecarbonell.pro@gmail.com</a>.</p></li>
+				</article>
+
+				<!-- About -->
+				<article id="perso">
+					<h2 class="major">Personal Interests</h2>
+					<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
+					<p>Outside of work, I am passionate about sports, particularly Judo, running, and skiing. These activities not only keep me physically fit but also instill discipline and perseverance in all aspects of my life.</p>
+				</article>
+
+				<!-- Documents -->
+				<article id="papers">
+					<h2 class="major">Papers and Projects</h2>
+					<ul>
+						<li><p>Bachelor Project - 2022: Chebyshev method for the implied
+							volatility in options pricing.</p><a href="Papers/Report.pdf" target="_blank">Doc</a></li>
+						<li><p>Paper - 2023: VaR and CVaR analysis for risk
+							management.</p><a href="Papers/Repport_VaR_CVaR.pdf" target="_blank">Doc</a></li>
+						<li><p>Paper - 2023: Predictive modeling for insurance claim:
+							Dealing with the challenge of precise prediction through an example.</p><a href="Papers/Semester_Paper_Report.pdf" target="_blank">Doc</a></li>
+						<li><p>Master Thesis - 2024: Extrapolation-Aware Nonparametric Inference: Integrating Quantile Forests and Neural Networks in Real-World Data Analysis. (Ongoing Project)</p></li>
+					</ul>
+				</article>
+
+				<!-- Contact -->
+				<article id="contact">
+					<h2 class="major">Contact</h2>
+					<form method="post" action="#">
+						<div class="fields">
+							<div class="field half">
+								<label for="name">Name</label>
+								<input type="text" name="name" id="name" />
+							</div>
+							<div class="field half">
+								<label for="email">Email</label>
+								<input type="text" name="email" id="email" />
+							</div>
+							<div class="field">
+								<label for="message">Message</label>
+								<textarea name="message" id="message" rows="4"></textarea>
 							</div>
 						</div>
-						<nav>
-							<ul>
-								<li><a href="#intro">About Me</a></li>
-								<li><a href="#perso">Personal Interests</a></li>
-								<li><a href="#contact">Contact</a></li>
-								<li><a href="#papers">Papers and Projects</a></li>
-							</ul>
-						</nav>
-					</header>
-
-				<!-- Main -->
-					<div id="main">
-
-						<!-- Intro -->
-							<article id="intro">
-								<h2 class="major">About Me</h2>
-								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
-								<p>Hello, I am Alexandre Carbonell. I have a Master's degree in Applied Mathematics from ETH Zürich, and a Bachelor's degree in Mathematics from EPFL. I hail from the beautiful city of Lyon, France, and currently reside in Zürich, where I work as an Associate - Pricing Analyst at Ageas Re.</p>
-								<li><p>You can find my CV here: <a href="Papers/Resume_Alexandre_Carbonell.pdf" target="_blank">Curriculum Vitae</a>.</p></li>
-								<li><p>And reach me at: <a href="mailto:alexandrecarbonell.pro@gmail.com">alexandrecarbonell.pro@gmail.com</a>.</p></li>
-							</article>
-
-						<!-- About -->
-							<article id="perso">
-								<h2 class="major">Personal Interests</h2>
-								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
-								<p>Outside of work, I am passionate about sports, particularly Judo, running, and skiing. These activities not only keep me physically fit but also instill discipline and perseverance in all aspects of my life.</p>
-							</article>
-
-						<!-- Documents -->
-							<article id="papers">
-								<h2 class="major">Papers and Projects</h2>
-								<ul>
-									<li><p>Bachelor Project - 2022: Chebyshev method for the implied
-										volatility in options pricing.</p><a href="Papers/Report.pdf" target="_blank">Doc</a></li>
-									<li><p>Paper - 2023: VaR and CVaR analysis for risk
-										management.</p><a href="Papers/Repport_VaR_CVaR.pdf" target="_blank">Doc</a></li>
-									<li><p>Paper - 2023: Predictive modeling for insurance claim:
-										Dealing with the challenge of precise prediction through an example.</p><a href="Papers/Semester_Paper_Report.pdf" target="_blank">Doc</a></li>
-									<li><p>Master Thesis - 2024: Extrapolation-Aware Nonparametric Inference: Integrating Quantile Forests and Neural Networks in Real-World Data Analysis. (Ongoing Project)</p></li>
-								</ul>
-							</article>
-
-						<!-- Contact -->
-							<article id="contact">
-								<h2 class="major">Contact</h2>
-								<form method="post" action="#">
-									<div class="fields">
-										<div class="field half">
-											<label for="name">Name</label>
-											<input type="text" name="name" id="name" />
-										</div>
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" />
-										</div>
-										<div class="field">
-											<label for="message">Message</label>
-											<textarea name="message" id="message" rows="4"></textarea>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Send Message" class="primary" /></li>
-										<li><input type="reset" value="Reset" /></li>
-									</ul>
-								</form>
-								<ul class="icons">
-									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</article>
-
-					</div>
-
-				<!-- Footer -->
-					<footer id="footer">
-						<p class="copyright">&copy;Alexandre Carbonell 2024.</p>
-					</footer>
+						<ul class="actions">
+							<li><input type="submit" value="Send Message" class="primary" /></li>
+							<li><input type="reset" value="Reset" /></li>
+						</ul>
+					</form>
+					<ul class="icons">
+						<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+					</ul>
+				</article>
 
 			</div>
 
+			<!-- Footer -->
+			<footer id="footer">
+				<p class="copyright">&copy;Alexandre Carbonell 2024.</p>
+			</footer>
+
+		</div>
+
 		<!-- BG -->
-			<div id="bg"></div>
+		<div id="bg"></div>
+
+		<!-- Omega sign -->
+		<div id="omega-sign">Ω</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				const omegaSign = document.getElementById('omega-sign');
+				
+				document.addEventListener('mousemove', function(e) {
+					omegaSign.style.display = 'block';
+					omegaSign.style.left = e.pageX + 'px';
+					omegaSign.style.top = e.pageY + 'px';
+				});
+				
+				document.addEventListener('mouseout', function() {
+					omegaSign.style.display = 'none';
+				});
+			});
+		</script>
 	</body>
 </html>
