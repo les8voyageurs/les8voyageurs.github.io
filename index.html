@@ -26,6 +26,19 @@
 				font-size: 2em; /* Adjust the size as needed */
 				font-weight: bold;
 			}
+			.logo svg {
+				width: 2em; /* Adjust the size as needed */
+				height: auto;
+			}
+			.play-button {
+				background-color: transparent;
+				border: none;
+				cursor: pointer;
+			}
+			.play-button svg {
+				width: 2em;
+				height: auto;
+			}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -36,10 +49,12 @@
 			<!-- Header -->
 			<header id="header">
 				<div class="logo">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="lightblue">
+					<span>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="lightblue">
 							<path d="M12 .587l3.668 7.571L24 9.743l-6 5.847 1.416 8.256L12 18.897l-7.416 4.949L6 15.59 0 9.743l8.332-1.585L12 .587z"/>
 							<path d="M12 4.5c1.179 0 2.138.96 2.138 2.138S13.179 8.776 12 8.776s-2.138-.96-2.138-2.138S10.821 4.5 12 4.5z" fill="white"/>
-					</svg>
+						</svg>
+					</span>
 				</div>
 				<div class="content">
 					<div class="inner">
@@ -83,7 +98,12 @@
 					<h2 class="major">Chapitre 1</h2>
 					<p>La Chasse</p>
 					<span class="image main"><img src="images/C1i.jpeg" alt="" /></span>
-					<a href="Voix/C1.m4a" target="_blank">Chapitre 1 (mp3)</a>
+					<audio id="audio1" src="Voix/C1.m4a"></audio>
+					<button class="play-button" onclick="document.getElementById('audio1').play();">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M8 5v14l11-7z"/>
+						</svg>
+					</button>
 				</article>
 
 				<!-- Ch2 -->
@@ -91,7 +111,12 @@
 					<h2 class="major">Chapitre 2</h2>
 					<p>L'étrange Marchand</p>
 					<span class="image main"><img src="images/C2i.jpeg" alt="" /></span>
-					<a href="Voix/C2.m4a" target="_blank">Chapitre 2 (mp3)</a>
+					<audio id="audio2" src="Voix/C2.m4a"></audio>
+					<button class="play-button" onclick="document.getElementById('audio2').play();">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M8 5v14l11-7z"/>
+						</svg>
+					</button>
 				</article>
 
 				<!-- Ch3 -->
@@ -99,7 +124,12 @@
 					<h2 class="major">Chapitre 3</h2>
 					<p>Le Pacte</p>
 					<span class="image main"><img src="images/C3i.jpeg" alt="" /></span>
-					<a href="Voix/C3.mp3" target="_blank">Chapitre 3 (mp3)</a>
+					<audio id="audio3" src="Voix/C3.mp3"></audio>
+					<button class="play-button" onclick="document.getElementById('audio3').play();">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M8 5v14l11-7z"/>
+						</svg>
+					</button>
 				</article>
 
 				<!-- Ch4 -->
@@ -107,7 +137,12 @@
 					<h2 class="major">Chapitre 4</h2>
 					<p>Le Départ</p>
 					<span class="image main"><img src="images/C4i.jpeg" alt="" /></span>
-					<a href="Voix/C4.mp3" target="_blank">Chapitre 4 (mp3)</a>
+					<audio id="audio4" src="Voix/C4.mp3"></audio>
+					<button class="play-button" onclick="document.getElementById('audio4').play();">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M8 5v14l11-7z"/>
+						</svg>
+					</button>
 				</article>
 
 				<!-- Ch5 -->
@@ -115,7 +150,12 @@
 					<h2 class="major">Chapitre 5</h2>
 					<p>La Rencontre Inattendue</p>
 					<span class="image main"><img src="images/C5i.jpeg" alt="" /></span>
-					<a href="Voix/C5.mp3" target="_blank">Chapitre 5 (mp3)</a>
+					<audio id="audio5" src="Voix/C5.mp3"></audio>
+					<button class="play-button" onclick="document.getElementById('audio5').play();">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M8 5v14l11-7z"/>
+						</svg>
+					</button>
 				</article>
 
 				<!-- Ch6 -->
@@ -123,7 +163,12 @@
 					<h2 class="major">Chapitre 6</h2>
 					<p>Les Murmures de la Forêt</p>
 					<span class="image main"><img src="images/C6i.jpeg" alt="" /></span>
-					<a href="Voix/C6.m4a" target="_blank">Chapitre 6 (mp3)</a>
+					<audio id="audio6" src="Voix/C6.m4a"></audio>
+					<button class="play-button" onclick="document.getElementById('audio6').play();">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M8 5v14l11-7z"/>
+						</svg>
+					</button>
 				</article>
 				
 				<!-- Ch7 -->
@@ -131,7 +176,12 @@
 					<h2 class="major">Chapitre 7</h2>
 					<p>Le Dilemme de la Route</p>
 					<span class="image main"><img src="images/C7i.jpeg" alt="" /></span>
-					<a href="Voix/C7.mp3" target="_blank">Chapitre 7 (mp3)</a>
+					<audio id="audio7" src="Voix/C7.mp3"></audio>
+					<button class="play-button" onclick="document.getElementById('audio7').play();">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M8 5v14l11-7z"/>
+						</svg>
+					</button>
 				</article>
 
 				<!-- Ch8 -->
@@ -139,7 +189,12 @@
 					<h2 class="major">Chapitre 8</h2>
 					<p>Mayim’Bolor</p>
 					<span class="image main"><img src="images/C8i.jpeg" alt="" /></span>
-					<a href="Voix/C8.mp3" target="_blank">Chapitre 8 (mp3)</a>
+					<audio id="audio8" src="Voix/C8.mp3"></audio>
+					<button class="play-button" onclick="document.getElementById('audio8').play();">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M8 5v14l11-7z"/>
+						</svg>
+					</button>
 				</article>
 
 			</div>
