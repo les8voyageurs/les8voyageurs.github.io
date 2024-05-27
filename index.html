@@ -56,6 +56,12 @@
                 display: block;
                 margin: 0 auto; /* Center the images */
             }
+            .image.main img {
+                width: 100%;
+                height: auto;
+                max-height: 80vh; /* Ensure the image fits within the viewport height */
+                object-fit: cover; /* Cover the container without distortion */
+            }
         </style>
     </head>
     <body class="is-preload">
