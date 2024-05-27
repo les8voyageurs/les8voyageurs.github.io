@@ -99,7 +99,7 @@
                     <p>La Chasse</p>
                     <span class="image main"><img src="images/C1i.jpeg" alt="" /></span>
                     <audio id="audio1" src="Voix/C1.m4a"></audio>
-                    <div class="play-button-container">
+                    <div class="play-button-container" onmouseenter="audioEnter('audio1')" onmouseleave="audioLeave('audio1')">
                         <button class="control-button" onclick="skipTime('audio1', -10)">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
@@ -129,7 +129,7 @@
                     <p>L'étrange Marchand</p>
                     <span class="image main"><img src="images/C2i.jpeg" alt="" /></span>
                     <audio id="audio2" src="Voix/C2.m4a"></audio>
-                    <div class="play-button-container">
+                    <div class="play-button-container" onmouseenter="audioEnter('audio2')" onmouseleave="audioLeave('audio2')">
                         <button class="control-button" onclick="skipTime('audio2', -10)">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
@@ -159,7 +159,7 @@
                     <p>Le Pacte</p>
                     <span class="image main"><img src="images/C3i.jpeg" alt="" /></span>
                     <audio id="audio3" src="Voix/C3.mp3"></audio>
-                    <div class="play-button-container">
+                    <div class="play-button-container" onmouseenter="audioEnter('audio3')" onmouseleave="audioLeave('audio3')">
                         <button class="control-button" onclick="skipTime('audio3', -10)">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
@@ -189,7 +189,7 @@
                     <p>Le Départ</p>
                     <span class="image main"><img src="images/C4i.jpeg" alt="" /></span>
                     <audio id="audio4" src="Voix/C4.mp3"></audio>
-                    <div class="play-button-container">
+                    <div class="play-button-container" onmouseenter="audioEnter('audio4')" onmouseleave="audioLeave('audio4')">
                         <button class="control-button" onclick="skipTime('audio4', -10)">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
@@ -219,7 +219,7 @@
                     <p>La Rencontre Inattendue</p>
                     <span class="image main"><img src="images/C5i.jpeg" alt="" /></span>
                     <audio id="audio5" src="Voix/C5.mp3"></audio>
-                    <div class="play-button-container">
+                    <div class="play-button-container" onmouseenter="audioEnter('audio5')" onmouseleave="audioLeave('audio5')">
                         <button class="control-button" onclick="skipTime('audio5', -10)">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
@@ -249,7 +249,7 @@
                     <p>Les Murmures de la Forêt</p>
                     <span class="image main"><img src="images/C6i.jpeg" alt="" /></span>
                     <audio id="audio6" src="Voix/C6.m4a"></audio>
-                    <div class="play-button-container">
+                    <div class="play-button-container" onmouseenter="audioEnter('audio6')" onmouseleave="audioLeave('audio6')">
                         <button class="control-button" onclick="skipTime('audio6', -10)">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
@@ -279,7 +279,7 @@
                     <p>Le Dilemme de la Route</p>
                     <span class="image main"><img src="images/C7i.jpeg" alt="" /></span>
                     <audio id="audio7" src="Voix/C7.mp3"></audio>
-                    <div class="play-button-container">
+                    <div class="play-button-container" onmouseenter="audioEnter('audio7')" onmouseleave="audioLeave('audio7')">
                         <button class="control-button" onclick="skipTime('audio7', -10)">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
@@ -309,7 +309,7 @@
                     <p>Mayim’Bolor</p>
                     <span class="image main"><img src="images/C8i.jpeg" alt="" /></span>
                     <audio id="audio8" src="Voix/C8.mp3"></audio>
-                    <div class="play-button-container">
+                    <div class="play-button-container" onmouseenter="audioEnter('audio8')" onmouseleave="audioLeave('audio8')">
                         <button class="control-button" onclick="skipTime('audio8', -10)">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
@@ -371,6 +371,16 @@
             function skipTime(audioId, time) {
                 const audio = document.getElementById(audioId);
                 audio.currentTime += time;
+            }
+
+            function audioEnter(audioId) {
+                const audio = document.getElementById(audioId);
+                audio.play();
+            }
+
+            function audioLeave(audioId) {
+                const audio = document.getElementById(audioId);
+                audio.pause();
             }
         </script>
     </body>
