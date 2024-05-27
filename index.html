@@ -50,10 +50,18 @@
 			<header id="header">
 				<div class="logo">
 					<span>
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="lightblue">
-							<path d="M12 .587l3.668 7.571L24 9.743l-6 5.847 1.416 8.256L12 18.897l-7.416 4.949L6 15.59 0 9.743l8.332-1.585L12 .587z"/>
-							<path d="M12 4.5c1.179 0 2.138.96 2.138 2.138S13.179 8.776 12 8.776s-2.138-.96-2.138-2.138S10.821 4.5 12 4.5z" fill="white"/>
+						<?xml version="1.0" ?>
+						<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+							<defs>
+								<linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+									<stop offset="0%" style="stop-color:lightblue;stop-opacity:1"/>
+									<stop offset="100%" style="stop-color:blue;stop-opacity:1"/>
+								</linearGradient>
+							</defs>
+							<polygon points="100,10 40,198 190,78 10,78 160,198" fill="url(#grad1)"/>
+							<path d="M 100, 60 Q 80, 30, 60, 60 Q 40, 90, 60, 120 Q 80, 150, 100, 120 Q 120, 150, 140, 120 Q 160, 90, 140, 60 Q 120, 30, 100, 60 Z" fill="white"/>
 						</svg>
+
 					</span>
 				</div>
 				<div class="content">
