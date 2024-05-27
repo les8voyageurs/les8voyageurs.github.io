@@ -11,50 +11,35 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="assets/css/main.css" />
         <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-        <style>
-            body, html {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background-color: #f0f0f0; /* Example background color */
-            }
+         <style>
             #header .content .inner img {
-                width: 100%;
+                width: 100%; /* Adjust the size as needed */
                 height: auto;
-                border-radius: 10%;
-                object-fit: cover; /* Ensures the image covers the container without being cut off */
-                background-color: transparent; /* Removes black borders */
+                border-radius: 10%; /* Optional: to make the image circular */
             }
             img.responsive-image {
-                width: 100%;
-                height: auto;
-                border-radius: 10%;
-                object-fit: cover; /* Ensures the image covers the container without being cut off */
-                background-color: transparent; /* Removes black borders */
+                width: 100%; /* Set the width to 100% to make it responsive */
+                height: auto; /* Maintain the aspect ratio */
+                border-radius: 10%; /* Optional: to make the image circular */
             }
             img.responsive-icon {
-                width: 100%;
-                height: 100%;
-                border-radius: 50%;
-                object-fit: cover; /* Ensures the image covers the container without being cut off */
-                background-color: transparent; /* Removes black borders */
+                width: 100%; /* Set the width to 100% to make it responsive */
+                height: 100%; /* Maintain the aspect ratio */
+                border-radius: 50%; /* Make the image circular */
+                object-fit: cover; /* Ensure the image covers the entire circle */
             }
             .logo img {
-                position: absolute;
+                position: absolute; /* Absolute positioning to adjust centering */
                 top: 50%;
                 left: 50%;
-                transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%); /* Center the image */
             }
             .play-button-container {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 margin-top: 10px;
-                gap: 10px;
+                gap: 10px; /* Space between buttons */
             }
             .control-button {
                 background-color: transparent;
@@ -66,24 +51,10 @@
                 height: auto;
             }
             .personnages img {
-                width: 50%;
+                width: 50%; /* Adjust the size as needed */
                 height: auto;
                 display: block;
-                margin: 0 auto;
-            }
-            @media (max-width: 1200px) {
-                .personnages img {
-                    width: 75%;
-                }
-            }
-            @media (max-width: 768px) {
-                .personnages img {
-                    width: 100%;
-                }
-                #header .content .inner img {
-                    width: 100%;
-                    height: auto;
-                }
+                margin: 0 auto; /* Center the images */
             }
         </style>
     </head>
