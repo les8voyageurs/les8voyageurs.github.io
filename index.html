@@ -23,10 +23,11 @@
                 border-radius: 10%; /* Optional: to make the image circular */
             }
             #header .logo span {
-                font-size: 2em; /* Adjust the size as needed */
-                font-weight: bold;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
-            .logo svg {
+            .logo img {
                 width: 2em; /* Adjust the size as needed */
                 height: auto;
             }
@@ -57,17 +58,7 @@
             <header id="header">
                 <div class="logo">
                     <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-                            <!-- Shield background -->
-                            <path d="M50 2.5 C65 5, 90 20, 50 97.5 C10 20, 35 5, 50 2.5" fill="#c0c0c0" stroke="#000" stroke-width="2"/>
-                            <!-- Knight's helmet -->
-                            <path d="M35 35 Q40 20, 60 20 Q65 20, 65 35 Q65 40, 60 45 Q55 50, 45 50 Q40 50, 35 45 Q30 40, 35 35" fill="#888" stroke="#000" stroke-width="2"/>
-                            <!-- Helmet visor -->
-                            <path d="M40 32 Q50 28, 60 32 Q50 36, 40 32" fill="#555" stroke="#000" stroke-width="1"/>
-                            <!-- Decorative elements -->
-                            <circle cx="50" cy="37" r="2" fill="#000"/>
-                            <path d="M50 37 L50 45" stroke="#000" stroke-width="2"/>
-                        </svg>
+                        <img src="images/star.jpeg" alt="Star Icon">
                     </span>
                 </div>
                 <div class="content">
