@@ -24,10 +24,11 @@
             }
             img.responsive-icon {
                 width: 100%; /* Set the width to 100% to make it responsive */
-                height: auto; /* Maintain the aspect ratio */
-                border-radius: 50%; /* Optional: to make the image circular */
+                height: 100%; /* Maintain the aspect ratio */
+                border-radius: 50%; /* Make the image circular */
+                object-fit: cover; /* Ensure the image covers the entire circle */
             }
-           #header .logo span {
+            #header .logo span {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -35,11 +36,13 @@
                 height: 6em; /* Define the circle size */
                 border-radius: 50%; /* Make the container circular */
                 overflow: hidden; /* Ensure image does not overflow */
-            }
+                position: relative; /* Ensure positioning is relative for centering adjustments */
             }
             .logo img {
-                width: 6em; /* Adjust the size as needed */
-                height: auto;
+                position: absolute; /* Absolute positioning to adjust centering */
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%); /* Center the image */
             }
             .play-button-container {
                 display: flex;
