@@ -30,6 +30,12 @@
 				width: 2em; /* Adjust the size as needed */
 				height: auto;
 			}
+			.play-button-container {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-top: 10px;
+			}
 			.play-button {
 				background-color: transparent;
 				border: none;
@@ -50,17 +56,10 @@
 			<header id="header">
 				<div class="logo">
 					<span>
-						<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">
-							<defs>
-								<linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-									<stop offset="0%" style="stop-color:lightblue;stop-opacity:1"/>
-									<stop offset="100%" style="stop-color:blue;stop-opacity:1"/>
-								</linearGradient>
-							</defs>
-							<polygon points="100,10 40,198 190,78 10,78 160,198" fill="url(#grad1)"/>
-							<path d="M 100, 60 Q 80, 30, 60, 60 Q 40, 90, 60, 120 Q 80, 150, 100, 120 Q 120, 150, 140, 120 Q 160, 90, 140, 60 Q 120, 30, 100, 60 Z" fill="white"/>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="lightblue">
+							<path d="M12 .587l3.668 7.571L24 9.743l-6 5.847 1.416 8.256L12 18.897l-7.416 4.949L6 15.59 0 9.743l8.332-1.585L12 .587z"/>
+							<path d="M12 4.5c1.179 0 2.138.96 2.138 2.138S13.179 8.776 12 8.776s-2.138-.96-2.138-2.138S10.821 4.5 12 4.5z" fill="white"/>
 						</svg>
-
 					</span>
 				</div>
 				<div class="content">
@@ -106,11 +105,14 @@
 					<p>La Chasse</p>
 					<span class="image main"><img src="images/C1i.jpeg" alt="" /></span>
 					<audio id="audio1" src="Voix/C1.m4a"></audio>
-					<button class="play-button" onclick="document.getElementById('audio1').play();">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-							<path d="M8 5v14l11-7z"/>
-						</svg>
-					</button>
+					<div class="play-button-container">
+						<button class="play-button" onclick="togglePlayPause('audio1', this)">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M8 5v14l11-7z" class="play-icon"/>
+								<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" class="pause-icon" style="display:none;"/>
+							</svg>
+						</button>
+					</div>
 				</article>
 
 				<!-- Ch2 -->
@@ -119,11 +121,14 @@
 					<p>L'étrange Marchand</p>
 					<span class="image main"><img src="images/C2i.jpeg" alt="" /></span>
 					<audio id="audio2" src="Voix/C2.m4a"></audio>
-					<button class="play-button" onclick="document.getElementById('audio2').play();">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-							<path d="M8 5v14l11-7z"/>
-						</svg>
-					</button>
+					<div class="play-button-container">
+						<button class="play-button" onclick="togglePlayPause('audio2', this)">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M8 5v14l11-7z" class="play-icon"/>
+								<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" class="pause-icon" style="display:none;"/>
+							</svg>
+						</button>
+					</div>
 				</article>
 
 				<!-- Ch3 -->
@@ -132,11 +137,14 @@
 					<p>Le Pacte</p>
 					<span class="image main"><img src="images/C3i.jpeg" alt="" /></span>
 					<audio id="audio3" src="Voix/C3.mp3"></audio>
-					<button class="play-button" onclick="document.getElementById('audio3').play();">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-							<path d="M8 5v14l11-7z"/>
-						</svg>
-					</button>
+					<div class="play-button-container">
+						<button class="play-button" onclick="togglePlayPause('audio3', this)">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M8 5v14l11-7z" class="play-icon"/>
+								<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" class="pause-icon" style="display:none;"/>
+							</svg>
+						</button>
+					</div>
 				</article>
 
 				<!-- Ch4 -->
@@ -145,11 +153,14 @@
 					<p>Le Départ</p>
 					<span class="image main"><img src="images/C4i.jpeg" alt="" /></span>
 					<audio id="audio4" src="Voix/C4.mp3"></audio>
-					<button class="play-button" onclick="document.getElementById('audio4').play();">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-							<path d="M8 5v14l11-7z"/>
-						</svg>
-					</button>
+					<div class="play-button-container">
+						<button class="play-button" onclick="togglePlayPause('audio4', this)">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M8 5v14l11-7z" class="play-icon"/>
+								<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" class="pause-icon" style="display:none;"/>
+							</svg>
+						</button>
+					</div>
 				</article>
 
 				<!-- Ch5 -->
@@ -158,11 +169,14 @@
 					<p>La Rencontre Inattendue</p>
 					<span class="image main"><img src="images/C5i.jpeg" alt="" /></span>
 					<audio id="audio5" src="Voix/C5.mp3"></audio>
-					<button class="play-button" onclick="document.getElementById('audio5').play();">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-							<path d="M8 5v14l11-7z"/>
-						</svg>
-					</button>
+					<div class="play-button-container">
+						<button class="play-button" onclick="togglePlayPause('audio5', this)">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M8 5v14l11-7z" class="play-icon"/>
+								<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" class="pause-icon" style="display:none;"/>
+							</svg>
+						</button>
+					</div>
 				</article>
 
 				<!-- Ch6 -->
@@ -171,37 +185,46 @@
 					<p>Les Murmures de la Forêt</p>
 					<span class="image main"><img src="images/C6i.jpeg" alt="" /></span>
 					<audio id="audio6" src="Voix/C6.m4a"></audio>
-					<button class="play-button" onclick="document.getElementById('audio6').play();">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-							<path d="M8 5v14l11-7z"/>
-						</svg>
-					</button>
+					<div class="play-button-container">
+						<button class="play-button" onclick="togglePlayPause('audio6', this)">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M8 5v14l11-7z" class="play-icon"/>
+								<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" class="pause-icon" style="display:none;"/>
+							</svg>
+						</button>
+					</div>
 				</article>
 				
 				<!-- Ch7 -->
 				<article id="ch7">
-					<h2 class="major">Chapitre 7</h2>
+					<h2 class="major">Le Dilemme de la Route</h2>
 					<p>Le Dilemme de la Route</p>
 					<span class="image main"><img src="images/C7i.jpeg" alt="" /></span>
 					<audio id="audio7" src="Voix/C7.mp3"></audio>
-					<button class="play-button" onclick="document.getElementById('audio7').play();">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-							<path d="M8 5v14l11-7z"/>
-						</svg>
-					</button>
+					<div class="play-button-container">
+						<button class="play-button" onclick="togglePlayPause('audio7', this)">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M8 5v14l11-7z" class="play-icon"/>
+								<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" class="pause-icon" style="display:none;"/>
+							</svg>
+						</button>
+					</div>
 				</article>
 
 				<!-- Ch8 -->
 				<article id="ch8">
-					<h2 class="major">Chapitre 8</h2>
+					<h2 class="major">Mayim’Bolor</h2>
 					<p>Mayim’Bolor</p>
 					<span class="image main"><img src="images/C8i.jpeg" alt="" /></span>
 					<audio id="audio8" src="Voix/C8.mp3"></audio>
-					<button class="play-button" onclick="document.getElementById('audio8').play();">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-							<path d="M8 5v14l11-7z"/>
-						</svg>
-					</button>
+					<div class="play-button-container">
+						<button class="play-button" onclick="togglePlayPause('audio8', this)">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M8 5v14l11-7z" class="play-icon"/>
+								<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" class="pause-icon" style="display:none;"/>
+							</svg>
+						</button>
+					</div>
 				</article>
 
 			</div>
@@ -222,5 +245,22 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
+		<script>
+			function togglePlayPause(audioId, button) {
+				const audio = document.getElementById(audioId);
+				const playIcon = button.querySelector('.play-icon');
+				const pauseIcon = button.querySelector('.pause-icon');
+				
+				if (audio.paused) {
+					audio.play();
+					playIcon.style.display = 'none';
+					pauseIcon.style.display = 'block';
+				} else {
+					audio.pause();
+					playIcon.style.display = 'block';
+					pauseIcon.style.display = 'none';
+				}
+			}
+		</script>
 	</body>
 </html>
