@@ -53,11 +53,11 @@ document.querySelectorAll('article').forEach(article => {
     const observer = new MutationObserver(mutations => {
         mutations.forEach(mutation => {
             if (mutation.attributeName === 'style' && mutation.target.style.display === 'none') {
-                const audio = mutation.target.querySelector('audio');
-                if (audio) {
+                const audio = article.querySelector('audio');
+                if (audio && !audio.paused) {
                     audio.pause();
                     audio.currentTime = 0;
-                    const button = mutation.target.querySelector('.control-button');
+                    const button = article.querySelector('.control-button');
                     if (button) {
                         const playIcon = button.querySelector('.play-icon');
                         const pauseIcon = button.querySelector('.pause-icon');
@@ -73,7 +73,7 @@ document.querySelectorAll('article').forEach(article => {
         });
     });
 
-    observer.observe(article, { attributes: true });
+    observer.observe(article, { attributes: true, attributeFilter: ['style'] });
 });
 
 window.addEventListener('beforeunload', pauseAllAudios);
