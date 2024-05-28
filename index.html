@@ -352,6 +352,8 @@
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
         <script>
+            const audioIds = ['audio1', 'audio2', 'audio3', 'audio4', 'audio5', 'audio6', 'audio7', 'audio8'];
+
             function togglePlayPause(audioId, button) {
                 const audio = document.getElementById(audioId);
                 const playIcon = button.querySelector('.play-icon');
@@ -372,7 +374,17 @@
                 const audio = document.getElementById(audioId);
                 audio.currentTime += time;
             }
-            
+
+            function pauseAllAudios() {
+                audioIds.forEach(id => {
+                    const audio = document.getElementById(id);
+                    if (audio) {
+                        audio.pause();
+                    }
+                });
+            }
+
+            window.addEventListener('beforeunload', pauseAllAudios);
         </script>
     </body>
 </html>
