@@ -63,6 +63,17 @@
                 padding: 40px 20px;
             }
         }
+
+        /* Media queries for landscape mode */
+        @media (max-width: 768px) and (orientation: landscape) {
+            #header {
+                height: 100vh; /* Full viewport height in landscape */
+                padding: 20px;
+            }
+            #header .content .inner img {
+                max-width: 70%; /* Slightly smaller image to fit in landscape mode */
+            }
+        }
     </style>
 </head>
 <body class="is-preload">
