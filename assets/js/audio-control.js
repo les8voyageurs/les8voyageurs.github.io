@@ -9,13 +9,7 @@ function togglePlayPause(audioId, button) {
     // Pause the currently playing audio if it is different from the clicked one
     if (currentlyPlayingAudio && currentlyPlayingAudio !== audio) {
         currentlyPlayingAudio.pause();
-        const currentButton = document.querySelector(`button[onclick*="${currentlyPlayingAudio.id}"]`);
-        if (currentButton) {
-            const currentPlayIcon = currentButton.querySelector('.play-icon');
-            const currentPauseIcon = currentButton.querySelector('.pause-icon');
-            currentPlayIcon.style.display = 'block';
-            currentPauseIcon.style.display = 'none';
-        }
+        resetPlayPauseButton(currentlyPlayingAudio);
         currentlyPlayingAudio = null;
     }
 
@@ -37,12 +31,23 @@ function skipTime(audioId, time) {
     audio.currentTime += time;
 }
 
+function resetPlayPauseButton(audio) {
+    const button = document.querySelector(`button[onclick*="${audio.id}"]`);
+    if (button) {
+        const playIcon = button.querySelector('.play-icon');
+        const pauseIcon = button.querySelector('.pause-icon');
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+    }
+}
+
 function pauseAllAudios() {
     audioIds.forEach(id => {
         const audio = document.getElementById(id);
         if (audio) {
             audio.pause();
             audio.currentTime = 0; // Reset time to the start
+            resetPlayPauseButton(audio);
         }
     });
     currentlyPlayingAudio = null;
@@ -54,16 +59,10 @@ document.querySelectorAll('article').forEach(article => {
         mutations.forEach(mutation => {
             if (mutation.attributeName === 'style' && mutation.target.style.display === 'none') {
                 const audio = article.querySelector('audio');
-                if (audio && !audio.paused) {
+                if (audio) {
                     audio.pause();
                     audio.currentTime = 0;
-                    const button = article.querySelector('.control-button');
-                    if (button) {
-                        const playIcon = button.querySelector('.play-icon');
-                        const pauseIcon = button.querySelector('.pause-icon');
-                        playIcon.style.display = 'block';
-                        pauseIcon.style.display = 'none';
-                    }
+                    resetPlayPauseButton(audio);
                     // Reset the currentlyPlayingAudio if it's the one being paused
                     if (currentlyPlayingAudio === audio) {
                         currentlyPlayingAudio = null;
@@ -73,7 +72,7 @@ document.querySelectorAll('article').forEach(article => {
         });
     });
 
-    observer.observe(article, { attributes: true, attributeFilter: ['style'] });
+    observer.observe(article, { attributes: true });
 });
 
 window.addEventListener('beforeunload', pauseAllAudios);
