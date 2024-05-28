@@ -7,13 +7,23 @@
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
     <style>
-        #header .content .inner img {
-            width: 100%; 
-            height: auto; /* Maintain aspect ratio */
-            border-radius: 10%; 
+        #header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Full viewport height */
+            text-align: center;
         }
-        img.responsive-image {
-            width: 100%; 
+        #header .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 90%; /* Ensure content is not too wide */
+        }
+        #header .content .inner img {
+            max-width: 100%; 
             height: auto; /* Maintain aspect ratio */
             border-radius: 10%; 
         }
@@ -35,9 +45,13 @@
         }
         .personnages img {
             width: 50%; 
-            height: 50%;
+            height: auto; /* Maintain aspect ratio */
             display: block;
             margin: 0 auto; 
+        }
+        .inner {
+            width: 100%;
+            max-width: 600px; /* Max width for content */
         }
     </style>
 </head>
