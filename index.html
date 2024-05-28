@@ -1,4 +1,9 @@
 <!DOCTYPE HTML>
+<!--
+    Dimension by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
     <head>
         <title>Les 8 voyageurs</title>
@@ -6,23 +11,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="assets/css/main.css" />
         <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-        <style>
+         <style>
             #header .content .inner img {
-                width: 70%; 
+                width: 70%; /* Adjust the size as needed */
                 height: 70%;
-                border-radius: 10%; 
+                border-radius: 10%; /* Optional: to make the image circular */
             }
             img.responsive-image {
-                width: 100%; 
-                height: auto; 
-                border-radius: 10%; 
+                width: 100%; /* Set the width to 100% to make it responsive */
+                height: auto; /* Maintain the aspect ratio */
+                border-radius: 10%; /* Optional: to make the image circular */
             }
             .play-button-container {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 margin-top: 10px;
-                gap: 10px; 
+                gap: 10px; /* Space between buttons */
             }
             .control-button {
                 background-color: transparent;
@@ -34,15 +39,19 @@
                 height: auto;
             }
             .personnages img {
-                width: 50%; 
+                width: 50%; /* Adjust the size as needed */
                 height: 50%;
                 display: block;
-                margin: 0 auto; 
+                margin: 0 auto; /* Center the images */
             }
         </style>
     </head>
     <body class="is-preload">
+
+        <!-- Wrapper -->
         <div id="wrapper">
+
+            <!-- Header -->
             <header id="header">
                 <div class="logo">
                         <span>8</span>
@@ -68,7 +77,10 @@
                 </nav>
             </header>
 
+            <!-- Main -->
             <div id="main">
+
+                <!-- Perso -->
                 <article id="perso">
                     <h2 class="major">Les Personnages</h2>
                     <li class="personnages"><p>Aleksos</p><span class="image main"><img src="images/Alex.JPG" alt="Aleksos" /></span></li>
@@ -81,6 +93,7 @@
                     <li class="personnages"><p>Benyamin</p><span class="image main"><img src="images/Benjamin.JPG" alt="Benyamin" /></span></li>
                 </article>
 
+                <!-- Ch1 -->
                 <article id="ch1">
                     <h2 class="major">Chapitre 1</h2>
                     <p>La Chasse</p>
@@ -110,6 +123,7 @@
                     </div>
                 </article>
 
+                <!-- Ch2 -->
                 <article id="ch2">
                     <h2 class="major">Chapitre 2</h2>
                     <p>L'étrange Marchand</p>
@@ -139,6 +153,7 @@
                     </div>
                 </article>
 
+                <!-- Ch3 -->
                 <article id="ch3">
                     <h2 class="major">Chapitre 3</h2>
                     <p>Le Pacte</p>
@@ -168,6 +183,7 @@
                     </div>
                 </article>
 
+                <!-- Ch4 -->
                 <article id="ch4">
                     <h2 class="major">Chapitre 4</h2>
                     <p>Le Départ</p>
@@ -197,6 +213,7 @@
                     </div>
                 </article>
 
+                <!-- Ch5 -->
                 <article id="ch5">
                     <h2 class="major">Chapitre 5</h2>
                     <p>La Rencontre Inattendue</p>
@@ -226,6 +243,7 @@
                     </div>
                 </article>
 
+                <!-- Ch6 -->
                 <article id="ch6">
                     <h2 class="major">Chapitre 6</h2>
                     <p>Les Murmures de la Forêt</p>
@@ -255,6 +273,7 @@
                     </div>
                 </article>
                 
+                <!-- Ch7 -->
                 <article id="ch7">
                     <h2 class="major">Chapitre 7</h2>
                     <p>Le Dilemme de la Route</p>
@@ -284,6 +303,7 @@
                     </div>
                 </article>
 
+                <!-- Ch8 -->
                 <article id="ch8">
                     <h2 class="major">Chapitre 8</h2>
                     <p>Mayim’Bolor</p>
@@ -312,15 +332,20 @@
                         </button>
                     </div>
                 </article>
+
             </div>
 
+            <!-- Footer -->
             <footer id="footer">
                 <p class="copyright">&copy;Les 8 Voyageurs 2024.</p>
             </footer>
+
         </div>
 
+        <!-- BG -->
         <div id="bg"></div>
 
+        <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/browser.min.js"></script>
         <script src="assets/js/breakpoints.min.js"></script>
@@ -338,9 +363,8 @@
                 audioIds.forEach(id => {
                     if (id !== audioId) {
                         const otherAudio = document.getElementById(id);
-                        if (otherAudio) {
+                        if (otherAudio && !otherAudio.paused) {
                             otherAudio.pause();
-                            otherAudio.currentTime = 0; // Reset time to the start
                             const otherButton = document.querySelector(`button[onclick*="${id}"]`);
                             if (otherButton) {
                                 const otherPlayIcon = otherButton.querySelector('.play-icon');
