@@ -13,8 +13,8 @@
         <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
          <style>
             #header .content .inner img {
-                width: auto; /* Adjust the size as needed */
-                height: auto;
+                width: 50%; /* Adjust the size as needed */
+                height: 50%;
                 border-radius: 10%; /* Optional: to make the image circular */
             }
             img.responsive-image {
@@ -372,16 +372,7 @@
                 const audio = document.getElementById(audioId);
                 audio.currentTime += time;
             }
-
-            function audioEnter(audioId) {
-                const audio = document.getElementById(audioId);
-                audio.play();
-            }
-
-            function audioLeave(audioId) {
-                const audio = document.getElementById(audioId);
-                audio.pause();
-            }
+            
         </script>
     </body>
 </html>
