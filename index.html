@@ -345,6 +345,7 @@
                         currentPlayIcon.style.display = 'block';
                         currentPauseIcon.style.display = 'none';
                     }
+                    currentlyPlayingAudio = null;
                 }
 
                 if (audio.paused) {
@@ -370,6 +371,7 @@
                     const audio = document.getElementById(id);
                     if (audio) {
                         audio.pause();
+                        audio.currentTime = 0; // Reset time to the start
                     }
                 });
                 currentlyPlayingAudio = null;
@@ -391,6 +393,7 @@
                                     playIcon.style.display = 'block';
                                     pauseIcon.style.display = 'none';
                                 }
+                                currentlyPlayingAudio = null;
                             }
                         }
                     });
