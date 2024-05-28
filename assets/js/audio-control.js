@@ -64,7 +64,10 @@ document.querySelectorAll('article').forEach(article => {
                         playIcon.style.display = 'block';
                         pauseIcon.style.display = 'none';
                     }
-                    currentlyPlayingAudio = null;
+                    // Reset the currentlyPlayingAudio if it's the one being paused
+                    if (currentlyPlayingAudio === audio) {
+                        currentlyPlayingAudio = null;
+                    }
                 }
             }
         });
