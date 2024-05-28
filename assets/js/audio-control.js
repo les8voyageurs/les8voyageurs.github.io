@@ -1,68 +1,71 @@
-const audioIds = ['audio1', 'audio2', 'audio3', 'audio4', 'audio5', 'audio6', 'audio7', 'audio8'];
-let currentlyPlayingAudio = null;
+document.addEventListener('DOMContentLoaded', function() {
+    const audios = document.querySelectorAll('audio');
+    let currentAudio = null;
 
-function togglePlayPause(audioId, button) {
-    const audio = document.getElementById(audioId);
-    const playIcon = button.querySelector('.play-icon');
-    const pauseIcon = button.querySelector('.pause-icon');
+    audios.forEach(audio => {
+        audio.addEventListener('play', () => {
+            if (currentAudio && currentAudio !== audio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+            currentAudio = audio;
+        });
 
-    if (currentlyPlayingAudio && currentlyPlayingAudio !== audio) {
-        currentlyPlayingAudio.pause();
-        resetPlayPauseButton(currentlyPlayingAudio);
-        currentlyPlayingAudio = null;
+        audio.addEventListener('ended', () => {
+            currentAudio = null;
+        });
+    });
+
+    window.addEventListener('hashchange', checkVisibleAudio);
+    window.addEventListener('load', checkVisibleAudio);
+
+    function checkVisibleAudio() {
+        const hash = window.location.hash;
+        if (currentAudio && !document.querySelector(hash).contains(currentAudio)) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+            currentAudio = null;
+        }
     }
 
-    if (audio.paused) {
-        audio.play();
-        playIcon.style.display = 'none';
-        pauseIcon.style.display = 'block';
-        currentlyPlayingAudio = audio;
-    } else {
-        audio.pause();
-        playIcon.style.display = 'block';
-        pauseIcon.style.display = 'none';
-        currentlyPlayingAudio = null;
-    }
-}
-
-function skipTime(audioId, time) {
-    const audio = document.getElementById(audioId);
-    audio.currentTime += time;
-}
-
-function resetPlayPauseButton(audio) {
-    const button = document.querySelector(`button[onclick*="${audio.id}"]`);
-    if (button) {
+    window.togglePlayPause = function(audioId, button) {
+        const audio = document.getElementById(audioId);
         const playIcon = button.querySelector('.play-icon');
         const pauseIcon = button.querySelector('.pause-icon');
-        playIcon.style.display = 'block';
-        pauseIcon.style.display = 'none';
+
+        if (audio.paused) {
+            audio.play();
+            playIcon.style.display = 'none';
+            pauseIcon.style.display = 'block';
+        } else {
+            audio.pause();
+            playIcon.style.display = 'block';
+            pauseIcon.style.display = 'none';
+        }
+    };
+
+    window.skipTime = function(audioId, time) {
+        const audio = document.getElementById(audioId);
+        audio.currentTime = Math.max(0, Math.min(audio.duration, audio.currentTime + time));
+    };
+
+    function updateIcons() {
+        const buttons = document.querySelectorAll('.control-button');
+        buttons.forEach(button => {
+            const audioId = button.closest('.play-button-container').nextElementSibling.id;
+            const audio = document.getElementById(audioId);
+            const playIcon = button.querySelector('.play-icon');
+            const pauseIcon = button.querySelector('.pause-icon');
+
+            if (audio.paused) {
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+            } else {
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+            }
+        });
     }
-}
 
-function pauseAllAudios() {
-    audioIds.forEach(id => {
-        const audio = document.getElementById(id);
-        if (audio) {
-            audio.pause();
-            audio.currentTime = 0; // Reset time to the start
-            resetPlayPauseButton(audio);
-        }
-    });
-    currentlyPlayingAudio = null;
-}
-
-// Stop the audio when the article is closed
-document.querySelectorAll('article').forEach(article => {
-    article.addEventListener('click', () => {
-        const audio = article.querySelector('audio');
-        if (audio && !audio.paused) {
-            audio.pause();
-            audio.currentTime = 0;
-            resetPlayPauseButton(audio);
-            currentlyPlayingAudio = null;
-        }
-    });
+    setInterval(updateIcons, 100);
 });
-
-window.addEventListener('beforeunload', pauseAllAudios);
