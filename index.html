@@ -358,7 +358,24 @@
                 const audio = document.getElementById(audioId);
                 const playIcon = button.querySelector('.play-icon');
                 const pauseIcon = button.querySelector('.pause-icon');
-                
+
+                // Pause all other audios
+                audioIds.forEach(id => {
+                    if (id !== audioId) {
+                        const otherAudio = document.getElementById(id);
+                        if (otherAudio && !otherAudio.paused) {
+                            otherAudio.pause();
+                            const otherButton = document.querySelector(`button[onclick*="${id}"]`);
+                            if (otherButton) {
+                                const otherPlayIcon = otherButton.querySelector('.play-icon');
+                                const otherPauseIcon = otherButton.querySelector('.pause-icon');
+                                otherPlayIcon.style.display = 'block';
+                                otherPauseIcon.style.display = 'none';
+                            }
+                        }
+                    }
+                });
+
                 if (audio.paused) {
                     audio.play();
                     playIcon.style.display = 'none';
