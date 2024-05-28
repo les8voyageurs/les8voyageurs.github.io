@@ -6,7 +6,6 @@ function togglePlayPause(audioId, button) {
     const playIcon = button.querySelector('.play-icon');
     const pauseIcon = button.querySelector('.pause-icon');
 
-    // Pause the currently playing audio if it is different from the clicked one
     if (currentlyPlayingAudio && currentlyPlayingAudio !== audio) {
         currentlyPlayingAudio.pause();
         resetPlayPauseButton(currentlyPlayingAudio);
@@ -55,24 +54,15 @@ function pauseAllAudios() {
 
 // Stop the audio when the article is closed
 document.querySelectorAll('article').forEach(article => {
-    const observer = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-            if (mutation.attributeName === 'style' && mutation.target.style.display === 'none') {
-                const audio = article.querySelector('audio');
-                if (audio) {
-                    audio.pause();
-                    audio.currentTime = 0;
-                    resetPlayPauseButton(audio);
-                    // Reset the currentlyPlayingAudio if it's the one being paused
-                    if (currentlyPlayingAudio === audio) {
-                        currentlyPlayingAudio = null;
-                    }
-                }
-            }
-        });
+    article.addEventListener('click', () => {
+        const audio = article.querySelector('audio');
+        if (audio && !audio.paused) {
+            audio.pause();
+            audio.currentTime = 0;
+            resetPlayPauseButton(audio);
+            currentlyPlayingAudio = null;
+        }
     });
-
-    observer.observe(article, { attributes: true });
 });
 
 window.addEventListener('beforeunload', pauseAllAudios);
