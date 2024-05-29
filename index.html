@@ -501,10 +501,11 @@
         return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
     }
 
-    document.querySelectorAll('audio').forEach(audio => {
-        const seekBar = document.getElementById(`seek-bar${audio.id.slice(-1)}`);
-        const currentTimeDisplay = document.getElementById(`current-time${audio.id.slice(-1)}`);
-        const durationDisplay = document.getElementById(`duration${audio.id.slice(-1)}`);
+    function initializeAudioControls(audioId) {
+        const audio = document.getElementById(audioId);
+        const seekBar = document.getElementById(`seek-bar${audioId.slice(-1)}`);
+        const currentTimeDisplay = document.getElementById(`current-time${audioId.slice(-1)}`);
+        const durationDisplay = document.getElementById(`duration${audioId.slice(-1)}`);
 
         audio.addEventListener('loadedmetadata', () => {
             durationDisplay.textContent = formatTime(audio.duration);
@@ -519,7 +520,13 @@
         seekBar.addEventListener('input', () => {
             audio.currentTime = seekBar.value;
         });
+    }
+
+    // Initialize audio controls for all audios
+    document.addEventListener('DOMContentLoaded', () => {
+        ['audio1', 'audio2', 'audio3', 'audio4', 'audio5', 'audio6', 'audio7', 'audio8', 'audio9', 'audio10'].forEach(initializeAudioControls);
     });
 </script>
+
 </body>
 </html>
