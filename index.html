@@ -478,7 +478,7 @@
 	    const audios = document.querySelectorAll('audio');
 	
 	    audios.forEach(audio => {
-	        const audioId = audio.id.slice(-1); // Get the last character (number) from the id
+	        const audioId = audio.id.match(/\d+/)[0]; // Get the numeric part from the id
 	        const seekBar = document.getElementById(`seek-bar${audioId}`);
 	        const currentTimeDisplay = document.getElementById(`current-time${audioId}`);
 	        const durationDisplay = document.getElementById(`duration${audioId}`);
