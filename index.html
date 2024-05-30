@@ -136,53 +136,54 @@
             { id: 'ch10', title: 'Chapitre 10', description: 'Frères de Baston', image: 'images/C10i.webp', audio: 'Voix/C10.mp3' }
         ];
 
-        const mainElement = document.getElementById('main');
-        const navList = document.getElementById('nav-list');
-
-        chapters.forEach(chapter => {
-            const article = document.createElement('article');
-            article.id = chapter.id;
-            article.innerHTML = `
-                <h2 class="major">${chapter.title}</h2>
-                <p>${chapter.description}</p>
-                <span class="image main"><img src="${chapter.image}" alt="" /></span>
-                <audio id="audio${chapter.id.slice(-1)}" src="${chapter.audio}"></audio>
-                <div class="audio-controls">
-                    <span class="time" id="current-time${chapter.id.slice(-1)}">0:00</span>
-                    <input type="range" id="seek-bar${chapter.id.slice(-1)}" class="slider" value="0">
-                    <span class="time" id="duration${chapter.id.slice(-1)}">0:00</span>
-                </div>
-                <div class="play-button-container">
-                    <button class="control-button" onclick="skipTime('audio${chapter.id.slice(-1)}', -10)">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
-                        </svg>
-                    </button>
-                    <button class="control-button" onclick="togglePlayPause('audio${chapter.id.slice(-1)}', this)">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                            <g class="play-icon">
-                                <path d="M8 5v14l11-7z"/>
-                            </g>
-                            <g class="pause-icon" style="display:none;">
-                                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-                            </g>
-                        </svg>
-                    </button>
-                    <button class="control-button" onclick="skipTime('audio${chapter.id.slice(-1)}', 10)">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
-                        </svg>
-                    </button>
-                </div>
-            `;
-            mainElement.appendChild(article);
-
-            const navItem = document.createElement('li');
-            navItem.innerHTML = `<a href="#${chapter.id}">${chapter.title}</a>`;
-            navList.appendChild(navItem);
-        });
-
         document.addEventListener('DOMContentLoaded', function () {
+            const mainElement = document.getElementById('main');
+            const navList = document.getElementById('nav-list');
+            const persoArticle = document.getElementById('perso');
+
+            chapters.forEach(chapter => {
+                const article = document.createElement('article');
+                article.id = chapter.id;
+                article.innerHTML = `
+                    <h2 class="major">${chapter.title}</h2>
+                    <p>${chapter.description}</p>
+                    <span class="image main"><img src="${chapter.image}" alt="" /></span>
+                    <audio id="audio${chapter.id.slice(-1)}" src="${chapter.audio}"></audio>
+                    <div class="audio-controls">
+                        <span class="time" id="current-time${chapter.id.slice(-1)}">0:00</span>
+                        <input type="range" id="seek-bar${chapter.id.slice(-1)}" class="slider" value="0">
+                        <span class="time" id="duration${chapter.id.slice(-1)}">0:00</span>
+                    </div>
+                    <div class="play-button-container">
+                        <button class="control-button" onclick="skipTime('audio${chapter.id.slice(-1)}', -10)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
+                            </svg>
+                        </button>
+                        <button class="control-button" onclick="togglePlayPause('audio${chapter.id.slice(-1)}', this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <g class="play-icon">
+                                    <path d="M8 5v14l11-7z"/>
+                                </g>
+                                <g class="pause-icon" style="display:none;">
+                                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                                </g>
+                            </svg>
+                        </button>
+                        <button class="control-button" onclick="skipTime('audio${chapter.id.slice(-1)}', 10)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                `;
+                mainElement.appendChild(article);
+
+                const navItem = document.createElement('li');
+                navItem.innerHTML = `<a href="#${chapter.id}">${chapter.title}</a>`;
+                navList.appendChild(navItem);
+            });
+
             const audios = document.querySelectorAll('audio');
 
             audios.forEach(audio => {
