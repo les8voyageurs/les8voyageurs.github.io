@@ -120,6 +120,31 @@
             </article>
 
             <!-- Chapters Template Start -->
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                const chapters = [
+                    { id: 1, title: 'La Chasse' },
+                    { id: 2, title: 'L\'étrange Marchand' },
+                    { id: 3, title: 'Le Pacte' },
+                    { id: 4, title: 'Le Départ' },
+                    { id: 5, title: 'La Rencontre Inattendue' },
+                    { id: 6, title: 'Les Murmures de la Forêt' },
+                    { id: 7, title: 'Le Dilemme de la Route' },
+                    { id: 8, title: 'Mayim’Bolor' },
+                    { id: 9, title: 'Les Echos de la Ville Noyée' },
+                    { id: 10, title: 'Frères de Baston' },
+                ];
+    
+                const chapterTemplate = document.getElementById('chapter-template').innerHTML;
+                const chaptersContainer = document.getElementById('chapters-container');
+    
+                chapters.forEach(chapter => {
+                    let chapterHTML = chapterTemplate
+                        .replace(/{ID}/g, chapter.id)
+                        .replace('{TITLE}', chapter.title);
+                    chaptersContainer.insertAdjacentHTML('beforeend', chapterHTML);
+                });
+            </script>
             <script id="chapter-template" type="text/template">
                 <article id="ch{ID}">
                     <h2 class="major">Chapitre {ID}</h2>
@@ -175,29 +200,6 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/audio-control.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const chapters = [
-                { id: 1, title: 'La Chasse' },
-                { id: 2, title: 'L\'étrange Marchand' },
-                { id: 3, title: 'Le Pacte' },
-                { id: 4, title: 'Le Départ' },
-                { id: 5, title: 'La Rencontre Inattendue' },
-                { id: 6, title: 'Les Murmures de la Forêt' },
-                { id: 7, title: 'Le Dilemme de la Route' },
-                { id: 8, title: 'Mayim’Bolor' },
-                { id: 9, title: 'Les Echos de la Ville Noyée' },
-                { id: 10, title: 'Frères de Baston' },
-            ];
-
-            const chapterTemplate = document.getElementById('chapter-template').innerHTML;
-            const chaptersContainer = document.getElementById('chapters-container');
-
-            chapters.forEach(chapter => {
-                let chapterHTML = chapterTemplate
-                    .replace(/{ID}/g, chapter.id)
-                    .replace('{TITLE}', chapter.title);
-                chaptersContainer.insertAdjacentHTML('beforeend', chapterHTML);
-            });
 
             const audios = document.querySelectorAll('audio');
             audios.forEach(audio => {
