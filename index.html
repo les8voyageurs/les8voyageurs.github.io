@@ -102,6 +102,7 @@
                     <li><a href="#ch8">Chapitre 8</a></li>
                     <li><a href="#ch9">Chapitre 9</a></li>
                     <li><a href="#ch10">Chapitre 10</a></li>
+		    <li><a href="#ch11">Chapitre 11</a></li>
                 </ul>
             </nav>
         </header>
@@ -452,6 +453,40 @@
 	            </svg>
 	        </button>
 	        <button class="control-button" onclick="skipTime('audio10', 10)">
+	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+	                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
+	            </svg>
+	        </button>
+	    </div>
+	</article>
+
+	<article id="ch11">
+	    <h2 class="major">Chapitre 11</h2>
+	    <p>Révélation et Décision</p>
+	    <span class="image main"><img src="images/C11i.webp" alt="" /></span>
+	    <audio id="audio11" src="Voix/C11.mp3"></audio>
+	    <div class="audio-controls">
+	        <span class="time" id="current-time11">0:00</span>
+	        <input type="range" id="seek-bar11" class="slider" value="0">
+	        <span class="time" id="duration11">0:00</span>
+	    </div>
+	    <div class="play-button-container">
+	        <button class="control-button" onclick="skipTime('audio11', -10)">
+	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+	                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
+	            </svg>
+	        </button>
+	        <button class="control-button" onclick="togglePlayPause('audio11', this)">
+	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+	                <g class="play-icon">
+	                    <path d="M8 5v14l11-7z"/>
+	                </g>
+	                <g class="pause-icon" style="display:none;">
+	                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+	                </g>
+	            </svg>
+	        </button>
+	        <button class="control-button" onclick="skipTime('audio11', 10)">
 	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
 	                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
 	            </svg>
