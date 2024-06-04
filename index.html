@@ -144,8 +144,8 @@
 	        // Add to navigation
 	        const navItem = document.createElement('li');
 	        const navLink = document.createElement('a');
-	        navLink.href = `#ch${chapter.id.match(/\d+/)[0]}`;
-	        navLink.textContent = `Chapitre ${chapter.id.match(/\d+/)[0]}`;
+	        navLink.href = `#ch${chapter.id}`;
+	        navLink.textContent = `Chapitre ${chapter.id}`;
 	        navItem.appendChild(navLink);
 	        navChapters.appendChild(navItem);
 	
@@ -262,7 +262,7 @@
 	    seconds = Math.floor(seconds % 60);
 	    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 	}
-</script>
+    </script>
     </script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/browser.min.js"></script>
