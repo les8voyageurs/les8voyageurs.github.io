@@ -119,145 +119,150 @@
 
     <div id="bg"></div>
     <script>
-        const chapters = [
-            { id: 1, title: 'La Chasse', image: 'images/C1i.webp', audio: 'Voix/C1.m4a' },
-            { id: 2, title: "L'étrange Marchand", image: 'images/C2i.webp', audio: 'Voix/C2.m4a' },
-            { id: 3, title: 'Le Pacte', image: 'images/C3i.webp', audio: 'Voix/C3.mp3' },
-            { id: 4, title: 'Le Départ', image: 'images/C4i.webp', audio: 'Voix/C4.mp3' },
-            { id: 5, title: 'La Rencontre Inattendue', image: 'images/C5i.webp', audio: 'Voix/C5.mp3' },
-            { id: 6, title: 'Les Murmures de la Forêt', image: 'images/C6i.webp', audio: 'Voix/C6.m4a' },
-            { id: 7, title: 'Le Dilemme de la Route', image: 'images/C7i.webp', audio: 'Voix/C7.mp3' },
-            { id: 8, title: 'Mayim’Bolor', image: 'images/C8i.webp', audio: 'Voix/C8.mp3' },
-            { id: 9, title: 'Les Echos de la Ville Noyée', image: 'images/C9i.webp', audio: 'Voix/C9.mp3' },
-            { id: 10, title: 'Frères de Baston', image: 'images/C10i.webp', audio: 'Voix/C10.mp3' },
-            { id: 11, title: 'Révélation et Décision', image: 'images/C11i.webp', audio: 'Voix/C11.mp3' },
-            { id: 12, title: 'La Nuit Porte Conseil', image: 'images/C12i.webp', audio: 'Voix/C12.mp3' },
-            // Add new chapters here
-        ];
-
-        const navChapters = document.getElementById('nav-chapters');
-        const chaptersContainer = document.getElementById('chapters-container');
-
-        chapters.forEach(chapter => {
-            // Add to navigation
-            const navItem = document.createElement('li');
-            const navLink = document.createElement('a');
-            navLink.href = `#ch${chapter.id}`;
-            navLink.textContent = `Chapitre ${chapter.id}`;
-            navItem.appendChild(navLink);
-            navChapters.appendChild(navItem);
-
-            // Add chapter content
-            const article = document.createElement('article');
-            article.id = `ch${chapter.id}`;
-
-            const header = document.createElement('h2');
-            header.className = 'major';
-            header.textContent = `Chapitre ${chapter.id}`;
-            article.appendChild(header);
-
-            const paragraph = document.createElement('p');
-            paragraph.textContent = chapter.title;
-            article.appendChild(paragraph);
-
-            const image = document.createElement('span');
-            image.className = 'image main';
-            image.innerHTML = `<img src="${chapter.image}" alt="" />`;
-            article.appendChild(image);
-
-            const audio = document.createElement('audio');
-            audio.id = `audio${chapter.id}`;
-            audio.src = chapter.audio;
-            article.appendChild(audio);
-
-            const audioControls = document.createElement('div');
-            audioControls.className = 'audio-controls';
-            audioControls.innerHTML = `
-                <span class="time" id="current-time${chapter.id}">0:00</span>
-                <input type="range" id="seek-bar${chapter.id}" class="slider" value="0">
-                <span class="time" id="duration${chapter.id}">0:00</span>
-            `;
-            article.appendChild(audioControls);
-
-            const playButtonContainer = document.createElement('div');
-            playButtonContainer.className = 'play-button-container';
-            playButtonContainer.innerHTML = `
-                <button class="control-button" onclick="skipTime('audio${chapter.id}', -10)">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
-                    </svg>
-                </button>
-                <button class="control-button" onclick="togglePlayPause('audio${chapter.id}', this)">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <g class="play-icon">
-                            <path d="M8 5v14l11-7z"/>
-                        </g>
-                        <g class="pause-icon" style="display:none;">
-                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-                        </g>
-                    </svg>
-                </button>
-                <button class="control-button" onclick="skipTime('audio${chapter.id}', 10)">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
-                    </svg>
-                </button>
-            `;
-            article.appendChild(playButtonContainer);
-
-            chaptersContainer.appendChild(article);
-        });
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const audios = document.querySelectorAll('audio');
-
-            audios.forEach(audio => {
-                const audioId = audio.id.match(/\d+/)[0]; // Get the numeric part from the id
-                const seekBar = document.getElementById(`seek-bar${audioId}`);
-                const currentTimeDisplay = document.getElementById(`current-time${audioId}`);
-                const durationDisplay = document.getElementById(`duration${audioId}`);
-
-                audio.addEventListener('loadedmetadata', () => {
-                    durationDisplay.textContent = formatTime(audio.duration);
-                    seekBar.max = audio.duration;
-                });
-
-                audio.addEventListener('timeupdate', () => {
-                    currentTimeDisplay.textContent = formatTime(audio.currentTime);
-                    seekBar.value = audio.currentTime;
-                });
-
-                seekBar.addEventListener('input', () => {
-                    audio.currentTime = seekBar.value;
-                });
-            });
-        });
-
-        function togglePlayPause(audioId, button) {
-            const audio = document.getElementById(audioId);
-            const playIcon = button.querySelector('.play-icon');
-            const pauseIcon = button.querySelector('.pause-icon');
-            if (audio.paused) {
-                audio.play();
-                playIcon.style.display = 'none';
-                pauseIcon.style.display = 'block';
-            } else {
-                audio.pause();
-                playIcon.style.display = 'block';
-                pauseIcon.style.display = 'none';
-            }
-        }
-
-        function skipTime(audioId, time) {
-            const audio = document.getElementById(audioId);
-            audio.currentTime += time;
-        }
-
-        function formatTime(seconds) {
-            const minutes = Math.floor(seconds / 60);
-            seconds = Math.floor(seconds % 60);
-            return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        }
+       document.addEventListener('DOMContentLoaded', function () {
+	    console.log('DOM fully loaded and parsed');
+	    const chapters = [
+	        { id: 1, title: 'La Chasse', image: 'images/C1i.webp', audio: 'Voix/C1.m4a' },
+	        { id: 2, title: "L'étrange Marchand", image: 'images/C2i.webp', audio: 'Voix/C2.m4a' },
+	        { id: 3, title: 'Le Pacte', image: 'images/C3i.webp', audio: 'Voix/C3.mp3' },
+	        { id: 4, title: 'Le Départ', image: 'images/C4i.webp', audio: 'Voix/C4.mp3' },
+	        { id: 5, title: 'La Rencontre Inattendue', image: 'images/C5i.webp', audio: 'Voix/C5.mp3' },
+	        { id: 6, title: 'Les Murmures de la Forêt', image: 'images/C6i.webp', audio: 'Voix/C6.m4a' },
+	        { id: 7, title: 'Le Dilemme de la Route', image: 'images/C7i.webp', audio: 'Voix/C7.mp3' },
+	        { id: 8, title: 'Mayim’Bolor', image: 'images/C8i.webp', audio: 'Voix/C8.mp3' },
+	        { id: 9, title: 'Les Echos de la Ville Noyée', image: 'images/C9i.webp', audio: 'Voix/C9.mp3' },
+	        { id: 10, title: 'Frères de Baston', image: 'images/C10i.webp', audio: 'Voix/C10.mp3' },
+	        { id: 11, title: 'Révélation et Décision', image: 'images/C11i.webp', audio: 'Voix/C11.mp3' },
+	        { id: 12, title: 'La Nuit Porte Conseil', image: 'images/C12i.webp', audio: 'Voix/C12.mp3' },
+	        // Add new chapters here
+	    ];
+	
+	    const navChapters = document.getElementById('nav-chapters');
+	    const chaptersContainer = document.getElementById('chapters-container');
+	
+	    chapters.forEach(chapter => {
+	        // Add to navigation
+	        const navItem = document.createElement('li');
+	        const navLink = document.createElement('a');
+	        navLink.href = `#ch${chapter.id}`;
+	        navLink.textContent = `Chapitre ${chapter.id}`;
+	        navItem.appendChild(navLink);
+	        navChapters.appendChild(navItem);
+	
+	        // Add chapter content
+	        const article = document.createElement('article');
+	        article.id = `ch${chapter.id}`;
+	
+	        const header = document.createElement('h2');
+	        header.className = 'major';
+	        header.textContent = `Chapitre ${chapter.id}`;
+	        article.appendChild(header);
+	
+	        const paragraph = document.createElement('p');
+	        paragraph.textContent = chapter.title;
+	        article.appendChild(paragraph);
+	
+	        const image = document.createElement('span');
+	        image.className = 'image main';
+	        image.innerHTML = `<img src="${chapter.image}" alt="" />`;
+	        article.appendChild(image);
+	
+	        const audio = document.createElement('audio');
+	        audio.id = `audio${chapter.id}`;
+	        audio.src = chapter.audio;
+	        article.appendChild(audio);
+	
+	        const audioControls = document.createElement('div');
+	        audioControls.className = 'audio-controls';
+	        audioControls.innerHTML = `
+	            <span class="time" id="current-time${chapter.id}">0:00</span>
+	            <input type="range" id="seek-bar${chapter.id}" class="slider" value="0">
+	            <span class="time" id="duration${chapter.id}">0:00</span>
+	        `;
+	        article.appendChild(audioControls);
+	
+	        const playButtonContainer = document.createElement('div');
+	        playButtonContainer.className = 'play-button-container';
+	        playButtonContainer.innerHTML = `
+	            <button class="control-button" onclick="skipTime('audio${chapter.id}', -10)">
+	                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+	                    <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
+	                </svg>
+	            </button>
+	            <button class="control-button" onclick="togglePlayPause('audio${chapter.id}', this)">
+	                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+	                    <g class="play-icon">
+	                        <path d="M8 5v14l11-7z"/>
+	                    </g>
+	                    <g class="pause-icon" style="display:none;">
+	                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+	                    </g>
+	                </svg>
+	            </button>
+	            <button class="control-button" onclick="skipTime('audio${chapter.id}', 10)">
+	                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+	                    <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
+	                </svg>
+	            </button>
+	        `;
+	        article.appendChild(playButtonContainer);
+	
+	        chaptersContainer.appendChild(article);
+	        console.log(`Chapter ${chapter.id} added with ID ch${chapter.id}`);
+	    });
+	});
+	
+	document.addEventListener('DOMContentLoaded', function () {
+	    const audios = document.querySelectorAll('audio');
+	
+	    audios.forEach(audio => {
+	        const audioId = audio.id.match(/\d+/)[0]; // Get the numeric part from the id
+	        const seekBar = document.getElementById(`seek-bar${audioId}`);
+	        const currentTimeDisplay = document.getElementById(`current-time${audioId}`);
+	        const durationDisplay = document.getElementById(`duration${audioId}`);
+	
+	        audio.addEventListener('loadedmetadata', () => {
+	            durationDisplay.textContent = formatTime(audio.duration);
+	            seekBar.max = audio.duration;
+	        });
+	
+	        audio.addEventListener('timeupdate', () => {
+	            currentTimeDisplay.textContent = formatTime(audio.currentTime);
+	            seekBar.value = audio.currentTime;
+	        });
+	
+	        seekBar.addEventListener('input', () => {
+	            audio.currentTime = seekBar.value;
+	        });
+	    });
+	});
+	
+	function togglePlayPause(audioId, button) {
+	    const audio = document.getElementById(audioId);
+	    const playIcon = button.querySelector('.play-icon');
+	    const pauseIcon = button.querySelector('.pause-icon');
+	    if (audio.paused) {
+	        audio.play();
+	        playIcon.style.display = 'none';
+	        pauseIcon.style.display = 'block';
+	    } else {
+	        audio.pause();
+	        playIcon.style.display = 'block';
+	        pauseIcon.style.display = 'none';
+	    }
+	}
+	
+	function skipTime(audioId, time) {
+	    const audio = document.getElementById(audioId);
+	    audio.currentTime += time;
+	}
+	
+	function formatTime(seconds) {
+	    const minutes = Math.floor(seconds / 60);
+	    seconds = Math.floor(seconds % 60);
+	    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+	}
+</script>
     </script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/browser.min.js"></script>
