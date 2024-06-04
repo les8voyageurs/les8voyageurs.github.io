@@ -144,8 +144,8 @@
 	        // Add to navigation
 	        const navItem = document.createElement('li');
 	        const navLink = document.createElement('a');
-	        navLink.href = `#ch${chapter.id}`;
-	        navLink.textContent = `Chapitre ${chapter.id}`;
+	        navLink.href = `#ch${chapter.id.match(/\d+/)[0]}`;
+	        navLink.textContent = `Chapitre ${chapter.id.match(/\d+/)[0]}`;
 	        navItem.appendChild(navLink);
 	        navChapters.appendChild(navItem);
 	
