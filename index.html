@@ -1,17 +1,17 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Les 8 voyageurs</title>
+    <title>Les 8 Voyageurs</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
     <style>
-	#header .content .inner img {
-	    width: 70%; /* Adjust the size as needed */
-	    height: auto;
-	    border-radius: 20px; /* Optional: to make the image circular */
-	}
+        #header .content .inner img {
+            width: 70%; /* Adjust the size as needed */
+            height: auto;
+            border-radius: 20px; /* Optional: to make the image circular */
+        }
         #header .logo span {
             font-size: 2em; /* Adjust the size as needed */
             font-weight: bold;
@@ -42,6 +42,12 @@
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+        .volume-control {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
         .time {
             font-size: 1em;
@@ -74,6 +80,62 @@
             cursor: pointer;
             border-radius: 50%;
         }
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .search-bar {
+            margin: 20px auto;
+            text-align: center;
+        }
+        .search-bar input {
+            padding: 10px;
+            width: 80%;
+            font-size: 16px;
+        }
+        .character-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+        .character-modal img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
     </style>
 </head>
 <body class="is-preload">
@@ -102,23 +164,42 @@
                     <li><a href="#ch8">Chapitre 8</a></li>
                     <li><a href="#ch9">Chapitre 9</a></li>
                     <li><a href="#ch10">Chapitre 10</a></li>
-		    <li><a href="#ch11">Chapitre 11</a></li>
-		    <li><a href="#ch12">Chapitre 12</a></li>
+                    <li><a href="#ch11">Chapitre 11</a></li>
+                    <li><a href="#ch12">Chapitre 12</a></li>
                 </ul>
             </nav>
         </header>
 
         <div id="main">
+            <div class="search-bar">
+                <input type="text" placeholder="Search..." onkeyup="searchFunction()">
+            </div>
             <article id="perso">
                 <h2 class="major">Les Personnages</h2>
-                <li class="personnages"><p>Aleksos</p><span class="image main"><img src="images/Alex.webp" alt="Aleksos" /></span></li>
-                <li class="personnages"><p>Natan</p><span class="image main"><img src="images/Nathan.webp" alt="Natan" /></span></li>
-                <li class="personnages"><p>Augebert</p><span class="image main"><img src="images/Augustin.webp" alt="Augebert" /></span></li>
-                <li class="personnages"><p>Tomaire</p><span class="image main"><img src="images/Thomas.webp" alt="Tomaire" /></span></li>
-                <li class="personnages"><p>Godfroy</p><span class="image main"><img src="images/Gauthier.webp" alt="Godfroy" /></span></li>
-                <li class="personnages"><p>Aldaric</p><span class="image main"><img src="images/Adri.webp" alt="Aldaric" /></span></li>
-                <li class="personnages"><p>Roban</p><span class="image main"><img src="images/Robinson.webp" alt="Roban" /></span></li>
-                <li class="personnages"><p>Benyamin</p><span class="image main"><img src="images/Benjamin.webp" alt="Benyamin" /></span></li>
+                <li class="personnages" onclick="showModal('Aleksos', 'images/Alex.webp', 'Description of Aleksos')">
+                    <p>Aleksos</p><span class="image main"><img src="images/Alex.webp" alt="Aleksos" /></span>
+                </li>
+                <li class="personnages" onclick="showModal('Natan', 'images/Nathan.webp', 'Description of Natan')">
+                    <p>Natan</p><span class="image main"><img src="images/Nathan.webp" alt="Natan" /></span>
+                </li>
+                <li class="personnages" onclick="showModal('Augebert', 'images/Augustin.webp', 'Description of Augebert')">
+                    <p>Augebert</p><span class="image main"><img src="images/Augustin.webp" alt="Augebert" /></span>
+                </li>
+                <li class="personnages" onclick="showModal('Tomaire', 'images/Thomas.webp', 'Description of Tomaire')">
+                    <p>Tomaire</p><span class="image main"><img src="images/Thomas.webp" alt="Tomaire" /></span>
+                </li>
+                <li class="personnages" onclick="showModal('Godfroy', 'images/Gauthier.webp', 'Description of Godfroy')">
+                    <p>Godfroy</p><span class="image main"><img src="images/Gauthier.webp" alt="Godfroy" /></span>
+                </li>
+                <li class="personnages" onclick="showModal('Aldaric', 'images/Adri.webp', 'Description of Aldaric')">
+                    <p>Aldaric</p><span class="image main"><img src="images/Adri.webp" alt="Aldaric" /></span>
+                </li>
+                <li class="personnages" onclick="showModal('Roban', 'images/Robinson.webp', 'Description of Roban')">
+                    <p>Roban</p><span class="image main"><img src="images/Robinson.webp" alt="Roban" /></span>
+                </li>
+                <li class="personnages" onclick="showModal('Benyamin', 'images/Benjamin.webp', 'Description of Benyamin')">
+                    <p>Benyamin</p><span class="image main"><img src="images/Benjamin.webp" alt="Benyamin" /></span>
+                </li>
             </article>
 
             <article id="ch1">
@@ -130,6 +211,9 @@
                     <span class="time" id="current-time1">0:00</span>
                     <input type="range" id="seek-bar1" class="slider" value="0">
                     <span class="time" id="duration1">0:00</span>
+                    <div class="volume-control">
+                        <input type="range" id="volume-bar1" class="slider" min="0" max="1" step="0.01" value="1" onchange="setVolume('audio1', this.value)">
+                    </div>
                 </div>
                 <div class="play-button-container">
                     <button class="control-button" onclick="skipTime('audio1', -10)">
@@ -155,387 +239,467 @@
                 </div>
             </article>
 
-	    <article id="ch2">
-	    <h2 class="major">Chapitre 2</h2>
-	    <p>L'étrange Marchand</p>
-	    <span class="image main"><img src="images/C2i.webp" alt="" /></span>
-	    <audio id="audio2" src="Voix/C2.m4a"></audio>
-	    <div class="audio-controls">
-	        <span class="time" id="current-time2">0:00</span>
-	        <input type="range" id="seek-bar2" class="slider" value="0">
-	        <span class="time" id="duration2">0:00</span>
-	    </div>
-	    <div class="play-button-container">
-	        <button class="control-button" onclick="skipTime('audio2', -10)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
-	            </svg>
-	        </button>
-	        <button class="control-button" onclick="togglePlayPause('audio2', this)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <g class="play-icon">
-	                    <path d="M8 5v14l11-7z"/>
-	                </g>
-	                <g class="pause-icon" style="display:none;">
-	                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-	                </g>
-	            </svg>
-	        </button>
-	        <button class="control-button" onclick="skipTime('audio2', 10)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
-	            </svg>
-	        </button>
-	    </div>
-	</article>
-	
-	<article id="ch3">
-	    <h2 class="major">Chapitre 3</h2>
-	    <p>Le Pacte</p>
-	    <span class="image main"><img src="images/C3i.webp" alt="" /></span>
-	    <audio id="audio3" src="Voix/C3.mp3"></audio>
-	    <div class="audio-controls">
-	        <span class="time" id="current-time3">0:00</span>
-	        <input type="range" id="seek-bar3" class="slider" value="0">
-	        <span class="time" id="duration3">0:00</span>
-	    </div>
-	    <div class="play-button-container">
-	        <button class="control-button" onclick="skipTime('audio3', -10)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
-	            </svg>
-	        </button>
-	        <button class="control-button" onclick="togglePlayPause('audio3', this)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <g class="play-icon">
-	                    <path d="M8 5v14l11-7z"/>
-	                </g>
-	                <g class="pause-icon" style="display:none;">
-	                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-	                </g>
-	            </svg>
-	        </button>
-	        <button class="control-button" onclick="skipTime('audio3', 10)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
-	            </svg>
-	        </button>
-	    </div>
-	</article>
-
-	<article id="ch4">
-	    <h2 class="major">Chapitre 4</h2>
-	    <p>Le Départ</p>
-	    <span class="image main"><img src="images/C4i.webp" alt="" /></span>
-	    <audio id="audio4" src="Voix/C4.mp3"></audio>
-	    <div class="audio-controls">
-	        <span class="time" id="current-time4">0:00</span>
-	        <input type="range" id="seek-bar4" class="slider" value="0">
-	        <span class="time" id="duration4">0:00</span>
-	    </div>
-	    <div class="play-button-container">
-	        <button class="control-button" onclick="skipTime('audio4', -10)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
-	            </svg>
-	        </button>
-	        <button class="control-button" onclick="togglePlayPause('audio4', this)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <g class="play-icon">
-	                    <path d="M8 5v14l11-7z"/>
-	                </g>
-	                <g class="pause-icon" style="display:none;">
-	                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-	                </g>
-	            </svg>
-	        </button>
-	        <button class="control-button" onclick="skipTime('audio4', 10)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
-	            </svg>
-	        </button>
-	    </div>
-	</article>
-
-	<article id="ch5">
-	    <h2 class="major">Chapitre 5</h2>
-	    <p>La Rencontre Inattendue</p>
-	    <span class="image main"><img src="images/C5i.webp" alt="" /></span>
-	    <audio id="audio5" src="Voix/C5.mp3"></audio>
-	    <div class="audio-controls">
-	        <span class="time" id="current-time5">0:00</span>
-	        <input type="range" id="seek-bar5" class="slider" value="0">
-	        <span class="time" id="duration5">0:00</span>
-	    </div>
-	    <div class="play-button-container">
-	        <button class="control-button" onclick="skipTime('audio5', -10)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
-	            </svg>
-	        </button>
-	        <button class="control-button" onclick="togglePlayPause('audio5', this)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <g class="play-icon">
-	                    <path d="M8 5v14l11-7z"/>
-	                </g>
-	                <g class="pause-icon" style="display:none;">
-	                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-	                </g>
-	            </svg>
-	        </button>
-	        <button class="control-button" onclick="skipTime('audio5', 10)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
-	            </svg>
-	        </button>
-	    </div>
-	</article>
-
-	<article id="ch6">
-	    <h2 class="major">Chapitre 6</h2>
-	    <p>Les Murmures de la Forêt</p>
-	    <span class="image main"><img src="images/C6i.webp" alt="" /></span>
-	    <audio id="audio6" src="Voix/C6.m4a"></audio>
-	    <div class="audio-controls">
-	        <span class="time" id="current-time6">0:00</span>
-	        <input type="range" id="seek-bar6" class="slider" value="0">
-	        <span class="time" id="duration6">0:00</span>
-	    </div>
-	    <div class="play-button-container">
-	        <button class="control-button" onclick="skipTime('audio6', -10)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
-	            </svg>
-	        </button>
-	        <button class="control-button" onclick="togglePlayPause('audio6', this)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <g class="play-icon">
-	                    <path d="M8 5v14l11-7z"/>
-	                </g>
-	                <g class="pause-icon" style="display:none;">
-	                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-	                </g>
-	            </svg>
-	        </button>
-	        <button class="control-button" onclick="skipTime('audio6', 10)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
-	            </svg>
-	        </button>
-	    </div>
-	</article>
-
-	<article id="ch7">
-	    <h2 class="major">Chapitre 7</h2>
-	    <p>Le Dilemme de la Route</p>
-	    <span class="image main"><img src="images/C7i.webp" alt="" /></span>
-	    <audio id="audio7" src="Voix/C7.mp3"></audio>
-	    <div class="audio-controls">
-	        <span class="time" id="current-time7">0:00</span>
-	        <input type="range" id="seek-bar7" class="slider" value="0">
-	        <span class="time" id="duration7">0:00</span>
-	    </div>
-	    <div class="play-button-container">
-	        <button class="control-button" onclick="skipTime('audio7', -10)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
-	            </svg>
-	        </button>
-	        <button class="control-button" onclick="togglePlayPause('audio7', this)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <g class="play-icon">
-	                    <path d="M8 5v14l11-7z"/>
-	                </g>
-	                <g class="pause-icon" style="display:none;">
-	                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-	                </g>
-	            </svg>
-	        </button>
-	        <button class="control-button" onclick="skipTime('audio7', 10)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
-	            </svg>
-	        </button>
-	    </div>
-	</article>
-
-	<article id="ch8">
-	    <h2 class="major">Chapitre 8</h2>
-	    <p>Mayim’Bolor</p>
-	    <span class="image main"><img src="images/C8i.webp" alt="" /></span>
-	    <audio id="audio8" src="Voix/C8.mp3"></audio>
-	    <div class="audio-controls">
-	        <span class="time" id="current-time8">0:00</span>
-	        <input type="range" id="seek-bar8" class="slider" value="0">
-	        <span class="time" id="duration8">0:00</span>
-	    </div>
-	    <div class="play-button-container">
-	        <button class="control-button" onclick="skipTime('audio8', -10)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
-	            </svg>
-	        </button>
-	        <button class="control-button" onclick="togglePlayPause('audio8', this)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <g class="play-icon">
-	                    <path d="M8 5v14l11-7z"/>
-	                </g>
-	                <g class="pause-icon" style="display:none;">
-	                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-	                </g>
-	            </svg>
-	        </button>
-	        <button class="control-button" onclick="skipTime('audio8', 10)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
-	            </svg>
-	        </button>
-	    </div>
-	</article>
-
-	<article id="ch9">
-	    <h2 class="major">Chapitre 9</h2>
-	    <p>Les Echos de la Ville Noyée</p>
-	    <span class="image main"><img src="images/C9i.webp" alt="" /></span>
-	    <audio id="audio9" src="Voix/C9.mp3"></audio>
-	    <div class="audio-controls">
-	        <span class="time" id="current-time9">0:00</span>
-	        <input type="range" id="seek-bar9" class="slider" value="0">
-	        <span class="time" id="duration9">0:00</span>
-	    </div>
-	    <div class="play-button-container">
-	        <button class="control-button" onclick="skipTime('audio9', -10)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
-	            </svg>
-	        </button>
-	        <button class="control-button" onclick="togglePlayPause('audio9', this)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <g class="play-icon">
-	                    <path d="M8 5v14l11-7z"/>
-	                </g>
-	                <g class="pause-icon" style="display:none;">
-	                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-	                </g>
-	            </svg>
-	        </button>
-	        <button class="control-button" onclick="skipTime('audio9', 10)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
-	            </svg>
-	        </button>
-	    </div>
-	</article>
-
-	<article id="ch10">
-	    <h2 class="major">Chapitre 10</h2>
-	    <p>Frères de Baston</p>
-	    <span class="image main"><img src="images/C10i.webp" alt="" /></span>
-	    <audio id="audio10" src="Voix/C10.mp3"></audio>
-	    <div class="audio-controls">
-	        <span class="time" id="current-time10">0:00</span>
-	        <input type="range" id="seek-bar10" class="slider" value="0">
-	        <span class="time" id="duration10">0:00</span>
-	    </div>
-	    <div class="play-button-container">
-	        <button class="control-button" onclick="skipTime('audio10', -10)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
-	            </svg>
-	        </button>
-	        <button class="control-button" onclick="togglePlayPause('audio10', this)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <g class="play-icon">
-	                    <path d="M8 5v14l11-7z"/>
-	                </g>
-	                <g class="pause-icon" style="display:none;">
-	                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-	                </g>
-	            </svg>
-	        </button>
-	        <button class="control-button" onclick="skipTime('audio10', 10)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
-	            </svg>
-	        </button>
-	    </div>
-	</article>
-
-	<article id="ch11">
-	    <h2 class="major">Chapitre 11</h2>
-	    <p>Révélation et Décision</p>
-	    <span class="image main"><img src="images/C11i.webp" alt="" /></span>
-	    <audio id="audio11" src="Voix/C11.mp3"></audio>
-	    <div class="audio-controls">
-	        <span class="time" id="current-time11">0:00</span>
-	        <input type="range" id="seek-bar11" class="slider" value="0">
-	        <span class="time" id="duration11">0:00</span>
-	    </div>
-	    <div class="play-button-container">
-	        <button class="control-button" onclick="skipTime('audio11', -10)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
-	            </svg>
-	        </button>
-	        <button class="control-button" onclick="togglePlayPause('audio11', this)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <g class="play-icon">
-	                    <path d="M8 5v14l11-7z"/>
-	                </g>
-	                <g class="pause-icon" style="display:none;">
-	                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-	                </g>
-	            </svg>
-	        </button>
-	        <button class="control-button" onclick="skipTime('audio11', 10)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
-	            </svg>
-	        </button>
-	    </div>
-	</article>
-
-	<article id="ch12">
-	    <h2 class="major">Chapitre 12</h2>
-	    <p>La Nuit Porte Conseil</p>
-	    <span class="image main"><img src="images/C12i.webp" alt="" /></span>
-	    <audio id="audio12" src="Voix/C12.mp3"></audio>
-	    <div class="audio-controls">
-	        <span class="time" id="current-time12">0:00</span>
-	        <input type="range" id="seek-bar12" class="slider" value="0">
-	        <span class="time" id="duration12">0:00</span>
-	    </div>
-	    <div class="play-button-container">
-	        <button class="control-button" onclick="skipTime('audio12', -10)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
-	            </svg>
-	        </button>
-	        <button class="control-button" onclick="togglePlayPause('audio12', this)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <g class="play-icon">
-	                    <path d="M8 5v14l11-7z"/>
-	                </g>
-	                <g class="pause-icon" style="display:none;">
-	                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-	                </g>
-	            </svg>
-	        </button>
-	        <button class="control-button" onclick="skipTime('audio12', 10)">
-	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-	                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
-	            </svg>
-	        </button>
-	    </div>
-	</article>
+            <article id="ch1">
+		    <h2 class="major">Chapitre 1</h2>
+		    <p>La Chasse</p>
+		    <span class="image main"><img src="images/C1i.webp" alt="" /></span>
+		    <audio id="audio1" src="Voix/C1.m4a"></audio>
+		    <div class="audio-controls">
+		        <span class="time" id="current-time1">0:00</span>
+		        <input type="range" id="seek-bar1" class="slider" value="0">
+		        <span class="time" id="duration1">0:00</span>
+		        <div class="volume-control">
+		            <input type="range" id="volume-bar1" class="slider" min="0" max="1" step="0.01" value="1" onchange="setVolume('audio1', this.value)">
+		        </div>
+		    </div>
+		    <div class="play-button-container">
+		        <button class="control-button" onclick="skipTime('audio1', -10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="togglePlayPause('audio1', this)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <g class="play-icon">
+		                    <path d="M8 5v14l11-7z"/>
+		                </g>
+		                <g class="pause-icon" style="display:none;">
+		                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+		                </g>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="skipTime('audio1', 10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
+		            </svg>
+		        </button>
+		    </div>
+		</article>
 		
-	</div>
+		<article id="ch2">
+		    <h2 class="major">Chapitre 2</h2>
+		    <p>L'étrange Marchand</p>
+		    <span class="image main"><img src="images/C2i.webp" alt="" /></span>
+		    <audio id="audio2" src="Voix/C2.m4a"></audio>
+		    <div class="audio-controls">
+		        <span class="time" id="current-time2">0:00</span>
+		        <input type="range" id="seek-bar2" class="slider" value="0">
+		        <span class="time" id="duration2">0:00</span>
+		        <div class="volume-control">
+		            <input type="range" id="volume-bar2" class="slider" min="0" max="1" step="0.01" value="1" onchange="setVolume('audio2', this.value)">
+		        </div>
+		    </div>
+		    <div class="play-button-container">
+		        <button class="control-button" onclick="skipTime('audio2', -10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="togglePlayPause('audio2', this)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <g class="play-icon">
+		                    <path d="M8 5v14l11-7z"/>
+		                </g>
+		                <g class="pause-icon" style="display:none;">
+		                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+		                </g>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="skipTime('audio2', 10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
+		            </svg>
+		        </button>
+		    </div>
+		</article>
+		
+		<article id="ch3">
+		    <h2 class="major">Chapitre 3</h2>
+		    <p>Le Pacte</p>
+		    <span class="image main"><img src="images/C3i.webp" alt="" /></span>
+		    <audio id="audio3" src="Voix/C3.mp3"></audio>
+		    <div class="audio-controls">
+		        <span class="time" id="current-time3">0:00</span>
+		        <input type="range" id="seek-bar3" class="slider" value="0">
+		        <span class="time" id="duration3">0:00</span>
+		        <div class="volume-control">
+		            <input type="range" id="volume-bar3" class="slider" min="0" max="1" step="0.01" value="1" onchange="setVolume('audio3', this.value)">
+		        </div>
+		    </div>
+		    <div class="play-button-container">
+		        <button class="control-button" onclick="skipTime('audio3', -10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="togglePlayPause('audio3', this)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <g class="play-icon">
+		                    <path d="M8 5v14l11-7z"/>
+		                </g>
+		                <g class="pause-icon" style="display:none;">
+		                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+		                </g>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="skipTime('audio3', 10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
+		            </svg>
+		        </button>
+		    </div>
+		</article>
+		
+		<article id="ch4">
+		    <h2 class="major">Chapitre 4</h2>
+		    <p>Le Départ</p>
+		    <span class="image main"><img src="images/C4i.webp" alt="" /></span>
+		    <audio id="audio4" src="Voix/C4.mp3"></audio>
+		    <div class="audio-controls">
+		        <span class="time" id="current-time4">0:00</span>
+		        <input type="range" id="seek-bar4" class="slider" value="0">
+		        <span class="time" id="duration4">0:00</span>
+		        <div class="volume-control">
+		            <input type="range" id="volume-bar4" class="slider" min="0" max="1" step="0.01" value="1" onchange="setVolume('audio4', this.value)">
+		        </div>
+		    </div>
+		    <div class="play-button-container">
+		        <button class="control-button" onclick="skipTime('audio4', -10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="togglePlayPause('audio4', this)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <g class="play-icon">
+		                    <path d="M8 5v14l11-7z"/>
+		                </g>
+		                <g class="pause-icon" style="display:none;">
+		                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+		                </g>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="skipTime('audio4', 10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
+		            </svg>
+		        </button>
+		    </div>
+		</article>
+		
+		<article id="ch5">
+		    <h2 class="major">Chapitre 5</h2>
+		    <p>La Rencontre Inattendue</p>
+		    <span class="image main"><img src="images/C5i.webp" alt="" /></span>
+		    <audio id="audio5" src="Voix/C5.mp3"></audio>
+		    <div class="audio-controls">
+		        <span class="time" id="current-time5">0:00</span>
+		        <input type="range" id="seek-bar5" class="slider" value="0">
+		        <span class="time" id="duration5">0:00</span>
+		        <div class="volume-control">
+		            <input type="range" id="volume-bar5" class="slider" min="0" max="1" step="0.01" value="1" onchange="setVolume('audio5', this.value)">
+		        </div>
+		    </div>
+		    <div class="play-button-container">
+		        <button class="control-button" onclick="skipTime('audio5', -10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="togglePlayPause('audio5', this)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <g class="play-icon">
+		                    <path d="M8 5v14l11-7z"/>
+		                </g>
+		                <g class="pause-icon" style="display:none;">
+		                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+		                </g>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="skipTime('audio5', 10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
+		            </svg>
+		        </button>
+		    </div>
+		</article>
+		
+		<article id="ch6">
+		    <h2 class="major">Chapitre 6</h2>
+		    <p>Les Murmures de la Forêt</p>
+		    <span class="image main"><img src="images/C6i.webp" alt="" /></span>
+		    <audio id="audio6" src="Voix/C6.m4a"></audio>
+		    <div class="audio-controls">
+		        <span class="time" id="current-time6">0:00</span>
+		        <input type="range" id="seek-bar6" class="slider" value="0">
+		        <span class="time" id="duration6">0:00</span>
+		        <div class="volume-control">
+		            <input type="range" id="volume-bar6" class="slider" min="0" max="1" step="0.01" value="1" onchange="setVolume('audio6', this.value)">
+		        </div>
+		    </div>
+		    <div class="play-button-container">
+		        <button class="control-button" onclick="skipTime('audio6', -10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="togglePlayPause('audio6', this)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <g class="play-icon">
+		                    <path d="M8 5v14l11-7z"/>
+		                </g>
+		                <g class="pause-icon" style="display:none;">
+		                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+		                </g>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="skipTime('audio6', 10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
+		            </svg>
+		        </button>
+		    </div>
+		</article>
+		
+		<article id="ch7">
+		    <h2 class="major">Chapitre 7</h2>
+		    <p>Le Dilemme de la Route</p>
+		    <span class="image main"><img src="images/C7i.webp" alt="" /></span>
+		    <audio id="audio7" src="Voix/C7.mp3"></audio>
+		    <div class="audio-controls">
+		        <span class="time" id="current-time7">0:00</span>
+		        <input type="range" id="seek-bar7" class="slider" value="0">
+		        <span class="time" id="duration7">0:00</span>
+		        <div class="volume-control">
+		            <input type="range" id="volume-bar7" class="slider" min="0" max="1" step="0.01" value="1" onchange="setVolume('audio7', this.value)">
+		        </div>
+		    </div>
+		    <div class="play-button-container">
+		        <button class="control-button" onclick="skipTime('audio7', -10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="togglePlayPause('audio7', this)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <g class="play-icon">
+		                    <path d="M8 5v14l11-7z"/>
+		                </g>
+		                <g class="pause-icon" style="display:none;">
+		                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+		                </g>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="skipTime('audio7', 10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
+		            </svg>
+		        </button>
+		    </div>
+		</article>
+		
+		<article id="ch8">
+		    <h2 class="major">Chapitre 8</h2>
+		    <p>Mayim’Bolor</p>
+		    <span class="image main"><img src="images/C8i.webp" alt="" /></span>
+		    <audio id="audio8" src="Voix/C8.mp3"></audio>
+		    <div class="audio-controls">
+		        <span class="time" id="current-time8">0:00</span>
+		        <input type="range" id="seek-bar8" class="slider" value="0">
+		        <span class="time" id="duration8">0:00</span>
+		        <div class="volume-control">
+		            <input type="range" id="volume-bar8" class="slider" min="0" max="1" step="0.01" value="1" onchange="setVolume('audio8', this.value)">
+		        </div>
+		    </div>
+		    <div class="play-button-container">
+		        <button class="control-button" onclick="skipTime('audio8', -10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="togglePlayPause('audio8', this)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <g class="play-icon">
+		                    <path d="M8 5v14l11-7z"/>
+		                </g>
+		                <g class="pause-icon" style="display:none;">
+		                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+		                </g>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="skipTime('audio8', 10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
+		            </svg>
+		        </button>
+		    </div>
+		</article>
+		
+		<article id="ch9">
+		    <h2 class="major">Chapitre 9</h2>
+		    <p>Les Echos de la Ville Noyée</p>
+		    <span class="image main"><img src="images/C9i.webp" alt="" /></span>
+		    <audio id="audio9" src="Voix/C9.mp3"></audio>
+		    <div class="audio-controls">
+		        <span class="time" id="current-time9">0:00</span>
+		        <input type="range" id="seek-bar9" class="slider" value="0">
+		        <span class="time" id="duration9">0:00</span>
+		        <div class="volume-control">
+		            <input type="range" id="volume-bar9" class="slider" min="0" max="1" step="0.01" value="1" onchange="setVolume('audio9', this.value)">
+		        </div>
+		    </div>
+		    <div class="play-button-container">
+		        <button class="control-button" onclick="skipTime('audio9', -10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="togglePlayPause('audio9', this)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <g class="play-icon">
+		                    <path d="M8 5v14l11-7z"/>
+		                </g>
+		                <g class="pause-icon" style="display:none;">
+		                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+		                </g>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="skipTime('audio9', 10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
+		            </svg>
+		        </button>
+		    </div>
+		</article>
+		
+		<article id="ch10">
+		    <h2 class="major">Chapitre 10</h2>
+		    <p>Frères de Baston</p>
+		    <span class="image main"><img src="images/C10i.webp" alt="" /></span>
+		    <audio id="audio10" src="Voix/C10.mp3"></audio>
+		    <div class="audio-controls">
+		        <span class="time" id="current-time10">0:00</span>
+		        <input type="range" id="seek-bar10" class="slider" value="0">
+		        <span class="time" id="duration10">0:00</span>
+		        <div class="volume-control">
+		            <input type="range" id="volume-bar10" class="slider" min="0" max="1" step="0.01" value="1" onchange="setVolume('audio10', this.value)">
+		        </div>
+		    </div>
+		    <div class="play-button-container">
+		        <button class="control-button" onclick="skipTime('audio10', -10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="togglePlayPause('audio10', this)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <g class="play-icon">
+		                    <path d="M8 5v14l11-7z"/>
+		                </g>
+		                <g class="pause-icon" style="display:none;">
+		                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+		                </g>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="skipTime('audio10', 10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
+		            </svg>
+		        </button>
+		    </div>
+		</article>
+		
+		<article id="ch11">
+		    <h2 class="major">Chapitre 11</h2>
+		    <p>Révélation et Décision</p>
+		    <span class="image main"><img src="images/C11i.webp" alt="" /></span>
+		    <audio id="audio11" src="Voix/C11.mp3"></audio>
+		    <div class="audio-controls">
+		        <span class="time" id="current-time11">0:00</span>
+		        <input type="range" id="seek-bar11" class="slider" value="0">
+		        <span class="time" id="duration11">0:00</span>
+		        <div class="volume-control">
+		            <input type="range" id="volume-bar11" class="slider" min="0" max="1" step="0.01" value="1" onchange="setVolume('audio11', this.value)">
+		        </div>
+		    </div>
+		    <div class="play-button-container">
+		        <button class="control-button" onclick="skipTime('audio11', -10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="togglePlayPause('audio11', this)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <g class="play-icon">
+		                    <path d="M8 5v14l11-7z"/>
+		                </g>
+		                <g class="pause-icon" style="display:none;">
+		                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+		                </g>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="skipTime('audio11', 10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
+		            </svg>
+		        </button>
+		    </div>
+		</article>
+		
+		<article id="ch12">
+		    <h2 class="major">Chapitre 12</h2>
+		    <p>La Nuit Porte Conseil</p>
+		    <span class="image main"><img src="images/C12i.webp" alt="" /></span>
+		    <audio id="audio12" src="Voix/C12.mp3"></audio>
+		    <div class="audio-controls">
+		        <span class="time" id="current-time12">0:00</span>
+		        <input type="range" id="seek-bar12" class="slider" value="0">
+		        <span class="time" id="duration12">0:00</span>
+		        <div class="volume-control">
+		            <input type="range" id="volume-bar12" class="slider" min="0" max="1" step="0.01" value="1" onchange="setVolume('audio12', this.value)">
+		        </div>
+		    </div>
+		    <div class="play-button-container">
+		        <button class="control-button" onclick="skipTime('audio12', -10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M12 19V5l-7 7 7 7zm0-7l7 7V5l-7 7z"/>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="togglePlayPause('audio12', this)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <g class="play-icon">
+		                    <path d="M8 5v14l11-7z"/>
+		                </g>
+		                <g class="pause-icon" style="display:none;">
+		                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+		                </g>
+		            </svg>
+		        </button>
+		        <button class="control-button" onclick="skipTime('audio12', 10)">
+		            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+		                <path d="M5 5v14l7-7-7-7zm7 0v14l7-7-7-7z"/>
+		            </svg>
+		        </button>
+		    </div>
+		</article>
+
+            <div class="character-modal" id="characterModal">
+                <span class="modal-close" onclick="closeModal()">×</span>
+                <img id="modalImage" src="" alt="">
+                <h2 id="modalName"></h2>
+                <p id="modalDescription"></p>
+            </div>
+
+            <div id="overlay" onclick="closeModal()"></div>
+        </div>
+
         <footer id="footer">
             <p class="copyright">&copy;Les 8 Voyageurs 2024.</p>
         </footer>
     </div>
 
     <div id="bg"></div>
+    <button class="back-to-top" onclick="scrollToTop()">Top</button>
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/browser.min.js"></script>
@@ -544,57 +708,104 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/audio-control.js"></script>
     <script>
-	    document.addEventListener('DOMContentLoaded', function () {
-        const audios = document.querySelectorAll('audio');
-    
-        audios.forEach(audio => {
-            const audioId = audio.id.match(/\d+/)[0]; // Get the numeric part from the id
-            const seekBar = document.getElementById(`seek-bar${audioId}`);
-            const currentTimeDisplay = document.getElementById(`current-time${audioId}`);
-            const durationDisplay = document.getElementById(`duration${audioId}`);
-    
-            audio.addEventListener('loadedmetadata', () => {
-                durationDisplay.textContent = formatTime(audio.duration);
-                seekBar.max = audio.duration;
-            });
-    
-            audio.addEventListener('timeupdate', () => {
-                currentTimeDisplay.textContent = formatTime(audio.currentTime);
-                seekBar.value = audio.currentTime;
-            });
-    
-            seekBar.addEventListener('input', () => {
-                audio.currentTime = seekBar.value;
+        // Scroll to top button functionality
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+            const button = document.querySelector(".back-to-top");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                button.style.display = "block";
+            } else {
+                button.style.display = "none";
+            }
+        }
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        // Character modal functionality
+        function showModal(name, imgSrc, description) {
+            const modal = document.getElementById("characterModal");
+            document.getElementById("modalName").textContent = name;
+            document.getElementById("modalImage").src = imgSrc;
+            document.getElementById("modalDescription").textContent = description;
+            modal.style.display = "block";
+            document.getElementById("overlay").style.display = "block";
+        }
+        function closeModal() {
+            document.getElementById("characterModal").style.display = "none";
+            document.getElementById("overlay").style.display = "none";
+        }
+
+        // Audio control functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const audios = document.querySelectorAll('audio');
+            audios.forEach(audio => {
+                const audioId = audio.id.match(/\d+/)[0]; // Get the numeric part from the id
+                const seekBar = document.getElementById(`seek-bar${audioId}`);
+                const currentTimeDisplay = document.getElementById(`current-time${audioId}`);
+                const durationDisplay = document.getElementById(`duration${audioId}`);
+
+                audio.addEventListener('loadedmetadata', () => {
+                    durationDisplay.textContent = formatTime(audio.duration);
+                    seekBar.max = audio.duration;
+                });
+
+                audio.addEventListener('timeupdate', () => {
+                    currentTimeDisplay.textContent = formatTime(audio.currentTime);
+                    seekBar.value = audio.currentTime;
+                });
+
+                seekBar.addEventListener('input', () => {
+                    audio.currentTime = seekBar.value;
+                });
             });
         });
-    });
-    
-    function togglePlayPause(audioId, button) {
-        const audio = document.getElementById(audioId);
-        const playIcon = button.querySelector('.play-icon');
-        const pauseIcon = button.querySelector('.pause-icon');
-        if (audio.paused) {
-            audio.play();
-            playIcon.style.display = 'none';
-            pauseIcon.style.display = 'block';
-        } else {
-            audio.pause();
-            playIcon.style.display = 'block';
-            pauseIcon.style.display = 'none';
-        }
-    }
-    
-    function skipTime(audioId, time) {
-        const audio = document.getElementById(audioId);
-        audio.currentTime += time;
-    }
-    
-    function formatTime(seconds) {
-        const minutes = Math.floor(seconds / 60);
-        seconds = Math.floor(seconds % 60);
-        return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-    }
-</script>
 
+        function togglePlayPause(audioId, button) {
+            const audio = document.getElementById(audioId);
+            const playIcon = button.querySelector('.play-icon');
+            const pauseIcon = button.querySelector('.pause-icon');
+            if (audio.paused) {
+                audio.play();
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+            } else {
+                audio.pause();
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+            }
+        }
+
+        function skipTime(audioId, time) {
+            const audio = document.getElementById(audioId);
+            audio.currentTime += time;
+        }
+
+        function setVolume(audioId, volume) {
+            const audio = document.getElementById(audioId);
+            audio.volume = volume;
+        }
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            seconds = Math.floor(seconds % 60);
+            return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+
+        // Search functionality
+        function searchFunction() {
+            const input = document.querySelector('.search-bar input');
+            const filter = input.value.toLowerCase();
+            const articles = document.querySelectorAll('article');
+            articles.forEach(article => {
+                if (article.textContent.toLowerCase().includes(filter)) {
+                    article.style.display = '';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
