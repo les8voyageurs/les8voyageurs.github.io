@@ -245,6 +245,11 @@
                     audio.currentTime = seekBar.value;
                 });
             });
+
+            // Set the first article as active by default
+            if (chapters.length > 0) {
+                document.getElementById(chapters[0].id).classList.add('active');
+            }
         });
 
         function togglePlayPause(audioId, button) {
