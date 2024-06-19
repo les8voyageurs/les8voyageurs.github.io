@@ -151,7 +151,7 @@
                     img.innerHTML = `<img src="images/${chapter.img}" alt="" />`;
                     article.appendChild(img);
                     const audioControls = createAudioControls(chapter.audio, chapter.id.match(/\d+/)[0]);
-                    article.appendChild(audioControls);
+                    article.innerHTML += audioControls;
                 }
 
                 mainContent.appendChild(article);
@@ -169,12 +169,12 @@
                     { name: 'Benyamin', img: 'Benjamin.webp' }
                 ];
 
-                return characters.map(char => `
+                return `<ul>${characters.map(char => `
                     <li class="personnages">
                         <p>${char.name}</p>
                         <span class="image main"><img src="images/${char.img}" alt="${char.name}" /></span>
                     </li>
-                `).join('');
+                `).join('')}</ul>`;
             }
 
             function createAudioControls(audioFile, id) {
