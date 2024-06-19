@@ -13,12 +13,35 @@ document.addEventListener('DOMContentLoaded', function () {
         { id: 'ch11', title: 'Chapitre 11', description: 'Révélation et Décision', image: 'images/C11i.webp', audio: 'Voix/C11.mp3' },
         { id: 'ch12', title: 'Chapitre 12', description: 'La Nuit Porte Conseil', image: 'images/C12i.webp', audio: 'Voix/C12.mp3' },
         { id: 'ch13', title: 'Chapitre 13', description: 'L\'Ombre du Passé', image: 'images/C13i.webp', audio: 'Voix/C13.mp3' },
-        { id: 'ch14', title: 'Chapitre 14', description: 'Bois Marin', image: 'images/C14i.webp', audio: 'Voix/C14.mp3' },
-        // Add more chapters here
+        { id: 'ch14', title: 'Chapitre 14', description: 'Bois Marin', image: 'images/C14i.webp', audio: 'Voix/C14.mp3' }
     ];
 
     const navList = document.getElementById('nav-list');
     const mainContent = document.getElementById('main');
+
+    // Add Personnages navigation link
+    const personnagesNavItem = document.createElement('li');
+    const personnagesNavLink = document.createElement('a');
+    personnagesNavLink.href = "#perso";
+    personnagesNavLink.textContent = "Personnages";
+    personnagesNavItem.appendChild(personnagesNavLink);
+    navList.appendChild(personnagesNavItem);
+
+    // Create Personnages article
+    const personnagesArticle = document.createElement('article');
+    personnagesArticle.id = 'perso';
+    personnagesArticle.innerHTML = `
+        <h2 class="major">Les Personnages</h2>
+        <li class="personnages"><p>Aleksos</p><span class="image main"><img src="images/Alex.webp" alt="Aleksos" /></span></li>
+        <li class="personnages"><p>Natan</p><span class="image main"><img src="images/Nathan.webp" alt="Natan" /></span></li>
+        <li class="personnages"><p>Augebert</p><span class="image main"><img src="images/Augustin.webp" alt="Augebert" /></span></li>
+        <li class="personnages"><p>Tomaire</p><span class="image main"><img src="images/Thomas.webp" alt="Tomaire" /></span></li>
+        <li class="personnages"><p>Godfroy</p><span class="image main"><img src="images/Gauthier.webp" alt="Godfroy" /></span></li>
+        <li class="personnages"><p>Aldaric</p><span class="image main"><img src="images/Adri.webp" alt="Aldaric" /></span></li>
+        <li class="personnages"><p>Roban</p><span class="image main"><img src="images/Robinson.webp" alt="Roban" /></span></li>
+        <li class="personnages"><p>Benyamin</p><span class="image main"><img src="images/Benjamin.webp" alt="Benyamin" /></span></li>
+    `;
+    mainContent.appendChild(personnagesArticle);
 
     chapters.forEach((chapter, index) => {
         // Create nav links
