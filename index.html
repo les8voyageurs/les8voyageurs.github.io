@@ -68,6 +68,12 @@
             cursor: pointer;
             border-radius: 50%;
         }
+        article {
+            display: none;
+        }
+        article.active {
+            display: block;
+        }
     </style>
 </head>
 <body class="is-preload">
@@ -130,6 +136,15 @@
                 const navLink = document.createElement('a');
                 navLink.href = `#${chapter.id}`;
                 navLink.textContent = chapter.title;
+                navLink.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    document.querySelectorAll('article').forEach(article => article.classList.remove('active'));
+                    document.getElementById(chapter.id).classList.add('active');
+                    window.scrollTo({
+                        top: document.getElementById(chapter.id).offsetTop,
+                        behavior: 'smooth'
+                    });
+                });
                 navItem.appendChild(navLink);
                 navList.appendChild(navItem);
 
