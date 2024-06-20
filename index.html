@@ -12,7 +12,14 @@
     <div id="wrapper">
         <header id="header">
             <div class="logo">
-                <span>8</span>
+                <div id="logo-container"></div>
+                <script>
+                    fetch('images/shield.svg')
+                        .then(response => response.text())
+                        .then(svg => {
+                            document.getElementById('logo-container').innerHTML = svg;
+                        });
+                </script>
             </div>
             <div class="content">
                 <div class="inner">
