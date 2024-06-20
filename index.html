@@ -25,7 +25,8 @@
                 <ul>
                     <li><a href="#perso">Personnages</a></li>
                     <script>
-                        for (let i = 1; i <= 14; i++) {
+                        const n = 14; // Variable for the number of chapters. If you add chapters, increase n accordingly
+                        for (let i = 1; i <= n; i++) {
                             document.write(`<li><a href="#ch${i}">Chapitre ${i}</a></li>`);
                         }
                     </script>
@@ -62,6 +63,8 @@
                     { title: "La Nuit Porte Conseil", image: "C12i.webp", audio: "C12.mp3" },
                     { title: "L'Ombre du Passé", image: "C13i.webp", audio: "C13.mp3" },
                     { title: "Bois Marin", image: "C14i.webp", audio: "C14.mp3" }
+                    // Add new chapters before this point with this template: 
+                    // { title: "Title Chapter X", image: "CXi.webp", audio: "CX.mp3" }
                 ];
 
                 chapters.forEach((chapter, index) => {
