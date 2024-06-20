@@ -197,57 +197,6 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const audios = document.querySelectorAll('audio');
-
-            audios.forEach(audio => {
-                const audioId = audio.id.match(/\d+/)[0]; // Get the numeric part from the id
-                const seekBar = document.getElementById(`seek-bar${audioId}`);
-                const currentTimeDisplay = document.getElementById(`current-time${audioId}`);
-                const durationDisplay = document.getElementById(`duration${audioId}`);
-
-                audio.addEventListener('loadedmetadata', () => {
-                    durationDisplay.textContent = formatTime(audio.duration);
-                    seekBar.max = audio.duration;
-                });
-
-                audio.addEventListener('timeupdate', () => {
-                    currentTimeDisplay.textContent = formatTime(audio.currentTime);
-                    seekBar.value = audio.currentTime;
-                });
-
-                seekBar.addEventListener('input', () => {
-                    audio.currentTime = seekBar.value;
-                });
-            });
-        });
-
-        function togglePlayPause(audioId, button) {
-            const audio = document.getElementById(audioId);
-            const playIcon = button.querySelector('.play-icon');
-            const pauseIcon = button.querySelector('.pause-icon');
-            if (audio.paused) {
-                audio.play();
-                playIcon.style.display = 'none';
-                pauseIcon.style.display = 'block';
-            } else {
-                audio.pause();
-                playIcon.style.display = 'block';
-                pauseIcon.style.display = 'none';
-            }
-        }
-
-        function skipTime(audioId, time) {
-            const audio = document.getElementById(audioId);
-            audio.currentTime += time;
-        }
-
-        function formatTime(seconds) {
-            const minutes = Math.floor(seconds / 60);
-            seconds = Math.floor(seconds % 60);
-            return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        }
-    </script>
+    <script src="assets/js/audio-control.js"></script>
 </body>
 </html>
