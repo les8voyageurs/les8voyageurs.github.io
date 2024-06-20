@@ -122,17 +122,6 @@
                         </article>
                     `);
                 });
-
-                function addComment(chapterNumber) {
-                    const name = document.getElementById(`name${chapterNumber}`).value;
-                    const message = document.getElementById(`message${chapterNumber}`).value;
-                    const commentsList = document.getElementById(`comments-list${chapterNumber}`);
-                    const newComment = document.createElement('li');
-                    newComment.textContent = `${name}: ${message}`;
-                    commentsList.appendChild(newComment);
-                    document.getElementById(`name${chapterNumber}`).value = '';
-                    document.getElementById(`message${chapterNumber}`).value = '';
-                }
             </script>
         </div>
         <footer id="footer">
