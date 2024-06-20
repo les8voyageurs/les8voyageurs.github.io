@@ -5,94 +5,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/custom.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-    <style>
-    #header .content .inner img {
-        width: 70%; /* Adjust the size as needed */
-        height: auto;
-        border-radius: 20px; /* Optional: to make the image circular */
-    }
-        #header .logo span {
-            font-size: 2em; /* Adjust the size as needed */
-            font-weight: bold;
-        }
-        .play-button-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 10px;
-            gap: 10px; 
-        }
-        .control-button {
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-        }
-        .control-button svg {
-            width: 2em;
-            height: auto;
-        }
-        .personnages img {
-            width: 20%; 
-            height: 20%; /* Maintain aspect ratio */
-            display: block;
-            margin: 0 auto; 
-        }
-        .audio-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .time {
-            font-size: 1em;
-        }
-        .slider {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 5px;
-            background: #ddd;
-            outline: none;
-            opacity: 0.7;
-            transition: opacity .2s;
-        }
-        .slider:hover {
-            opacity: 1;
-        }
-        .slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 15px;
-            height: 15px;
-            background: red;
-            cursor: pointer;
-            border-radius: 50%;
-        }
-        .slider::-moz-range-thumb {
-            width: 15px;
-            height: 15px;
-            background: red;
-            cursor: pointer;
-            border-radius: 50%;
-        }
-        .download-button {
-            background-color: #4CAF50; /* Green */
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 16px;
-            border: none;
-        }
-    </style>
 </head>
 <body class="is-preload">
     <div id="wrapper">
         <header id="header">
             <div class="logo">
-                <span>8</span>
+                <div id="logo-container"></div>
+                <script>
+                    fetch('images/shield.svg')
+                        .then(response => response.text())
+                        .then(svg => {
+                            document.getElementById('logo-container').innerHTML = svg;
+                        });
+                </script>
             </div>
             <div class="content">
                 <div class="inner">
@@ -105,7 +32,8 @@
                 <ul>
                     <li><a href="#perso">Personnages</a></li>
                     <script>
-                        for (let i = 1; i <= 14; i++) {
+                        const n = 14; // Variable for the number of chapters. If you add chapters, increase n accordingly
+                        for (let i = 1; i <= n; i++) {
                             document.write(`<li><a href="#ch${i}">Chapitre ${i}</a></li>`);
                         }
                     </script>
@@ -142,6 +70,8 @@
                     { title: "La Nuit Porte Conseil", image: "C12i.webp", audio: "C12.mp3" },
                     { title: "L'Ombre du Passé", image: "C13i.webp", audio: "C13.mp3" },
                     { title: "Bois Marin", image: "C14i.webp", audio: "C14.mp3" }
+                    // Add new chapters before this point with this template: 
+                    // { title: "Title Chapter X", image: "CXi.webp", audio: "CX.mp3" }
                 ];
 
                 chapters.forEach((chapter, index) => {
@@ -198,57 +128,5 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/audio-control.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const audios = document.querySelectorAll('audio');
-
-            audios.forEach(audio => {
-                const audioId = audio.id.match(/\d+/)[0]; // Get the numeric part from the id
-                const seekBar = document.getElementById(`seek-bar${audioId}`);
-                const currentTimeDisplay = document.getElementById(`current-time${audioId}`);
-                const durationDisplay = document.getElementById(`duration${audioId}`);
-
-                audio.addEventListener('loadedmetadata', () => {
-                    durationDisplay.textContent = formatTime(audio.duration);
-                    seekBar.max = audio.duration;
-                });
-
-                audio.addEventListener('timeupdate', () => {
-                    currentTimeDisplay.textContent = formatTime(audio.currentTime);
-                    seekBar.value = audio.currentTime;
-                });
-
-                seekBar.addEventListener('input', () => {
-                    audio.currentTime = seekBar.value;
-                });
-            });
-        });
-
-        function togglePlayPause(audioId, button) {
-            const audio = document.getElementById(audioId);
-            const playIcon = button.querySelector('.play-icon');
-            const pauseIcon = button.querySelector('.pause-icon');
-            if (audio.paused) {
-                audio.play();
-                playIcon.style.display = 'none';
-                pauseIcon.style.display = 'block';
-            } else {
-                audio.pause();
-                playIcon.style.display = 'block';
-                pauseIcon.style.display = 'none';
-            }
-        }
-
-        function skipTime(audioId, time) {
-            const audio = document.getElementById(audioId);
-            audio.currentTime += time;
-        }
-
-        function formatTime(seconds) {
-            const minutes = Math.floor(seconds / 60);
-            seconds = Math.floor(seconds % 60);
-            return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        }
-    </script>
 </body>
 </html>
