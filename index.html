@@ -110,9 +110,29 @@
                                 </button>
                                 <a href="Voix/${chapter.audio}" download class="download-button">Download</a>
                             </div>
+                            <div class="comments-section">
+                                <h3>Comments</h3>
+                                <ul id="comments-list${chapterNumber}"></ul>
+                                <form onsubmit="addComment(${chapterNumber}); return false;">
+                                    <input type="text" id="name${chapterNumber}" placeholder="Your name" required />
+                                    <input type="text" id="message${chapterNumber}" placeholder="Your comment" required />
+                                    <button type="submit">Submit</button>
+                                </form>
+                            </div>
                         </article>
                     `);
                 });
+
+                function addComment(chapterNumber) {
+                    const name = document.getElementById(`name${chapterNumber}`).value;
+                    const message = document.getElementById(`message${chapterNumber}`).value;
+                    const commentsList = document.getElementById(`comments-list${chapterNumber}`);
+                    const newComment = document.createElement('li');
+                    newComment.textContent = `${name}: ${message}`;
+                    commentsList.appendChild(newComment);
+                    document.getElementById(`name${chapterNumber}`).value = '';
+                    document.getElementById(`message${chapterNumber}`).value = '';
+                }
             </script>
         </div>
         <footer id="footer">
